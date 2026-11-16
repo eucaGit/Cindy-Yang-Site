@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cindy Yang · Gaea Realty</title>
+<meta name="description" content="Cindy Yang — Silicon Valley real estate investor, founder, women-empowerment advocate. Gaea Realty.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1113; --slate:rgba(88,98,106,.16); --slate2:rgba(88,98,106,.28); --line:rgba(160,172,180,.16);
+  --ink:#eef1f2; --mute:#97a1a7; --gaea:#3f9b78; /* Gaea green: used at 2–4% only */
+  --gaea-wash:rgba(63,155,120,.035);
+  --sf:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","Noto Sans SC","PingFang SC",sans-serif;
+  --greek:"GFS Didot","Didot","Palatino",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sf);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:
+ radial-gradient(900px 600px at 85% -5%,var(--gaea-wash),transparent 70%),
+ radial-gradient(800px 700px at -10% 40%,rgba(88,98,106,.14),transparent 70%)}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+/* language: show only active */
+html[lang=en] [data-l=zh],html[lang=zh] [data-l=en]{display:none!important}
+/* nav */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(18px) saturate(1.4);background:rgba(15,17,19,.62);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.brand{font-family:var(--greek);letter-spacing:.14em;font-size:18px;white-space:nowrap}
+.brand i{font-style:normal;color:var(--gaea)}
+.links{display:flex;gap:26px;font-size:14px;color:var(--mute)}
+.links a:hover{color:var(--ink)}
+.lang{display:flex;border:1px solid var(--line);border-radius:99px;padding:3px;background:var(--slate)}
+.lang button{border:0;background:none;color:var(--mute);font:500 13px var(--sf);padding:6px 14px;border-radius:99px;cursor:pointer}
+.lang button.on{background:var(--ink);color:#0f1113}
+@media(max-width:860px){.links{display:none}}
+/* type */
+.eyebrow{font-family:var(--greek);letter-spacing:.3em;text-transform:uppercase;font-size:13px;color:var(--mute)}
+.eyebrow b{color:var(--gaea);font-weight:400}
+h1{font-size:clamp(46px,9vw,128px);line-height:.98;font-weight:600;letter-spacing:-.04em}
+h2{font-size:clamp(34px,5.5vw,76px);line-height:1.05;font-weight:600;letter-spacing:-.03em}
+h3{font-size:22px;font-weight:600;letter-spacing:-.01em}
+.lead{font-size:clamp(18px,2vw,24px);color:var(--mute);max-width:760px;font-weight:300}
+section{padding:120px 0;border-top:1px solid var(--line)}
+.greek{font-family:var(--greek);color:var(--mute);letter-spacing:.2em}
+/* hero */
+.hero{border:0;padding:80px 0 110px}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:end}
+.hero h1 small{display:block;font-size:.34em;font-weight:300;letter-spacing:-.01em;color:var(--mute);margin-top:22px;line-height:1.3}
+.photo{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/5;background:var(--slate2);border:1px solid var(--line)}
+.photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.02)}
+.photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(15,17,19,.7)),var(--gaea-wash)}
+.photo span{position:absolute;left:22px;bottom:18px;z-index:2;font-family:var(--greek);letter-spacing:.25em;font-size:12px;color:var(--ink)}
+@media(max-width:860px){.hero-grid{grid-template-columns:1fr}.photo{max-width:420px}}
+/* prompt box */
+.talk{margin-top:44px;border:1px solid var(--line);background:var(--slate);backdrop-filter:blur(14px);border-radius:22px;padding:20px;max-width:760px}
+.talk label{font-family:var(--greek);letter-spacing:.2em;font-size:12px;color:var(--mute);text-transform:uppercase}
+.talk .row{display:flex;gap:10px;margin-top:12px}
+input,textarea,select{width:100%;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:14px;color:var(--ink);font:400 17px var(--sf);padding:15px 16px;outline:0}
+input:focus,textarea:focus,select:focus{border-color:rgba(63,155,120,.55)}
+.btn{border:0;cursor:pointer;background:var(--ink);color:#0f1113;font:600 16px var(--sf);padding:15px 26px;border-radius:14px;white-space:nowrap;transition:.2s}
+.btn:hover{transform:translateY(-1px);background:#fff}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chip{border:1px solid var(--line);background:var(--slate);color:var(--ink);padding:8px 14px;border-radius:99px;font:400 14px var(--sf);cursor:pointer;transition:.2s}
+.chip:hover{border-color:rgba(63,155,120,.6);background:var(--slate2)}
+/* intents */
+.intents{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.card{border:1px solid var(--line);background:var(--slate);border-radius:24px;padding:34px;transition:.25s}
+.card:hover{background:var(--slate2);transform:translateY(-3px)}
+.card .n{font-family:var(--greek);color:var(--gaea);font-size:14px;letter-spacing:.3em}
+.card h3{font-size:30px;margin:18px 0 10px}
+.card p{color:var(--mute)}
+@media(max-width:860px){.intents{grid-template-columns:1fr}}
+/* roles */
+.tabs{display:flex;gap:10px;margin:40px 0 28px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:none;color:var(--mute);font:500 17px var(--sf);padding:12px 24px;border-radius:99px;cursor:pointer}
+.tab.on{background:var(--ink);color:#0f1113;border-color:var(--ink)}
+.pane{display:none;border:1px solid var(--line);background:var(--slate);border-radius:28px;padding:48px}
+.pane.on{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.pane h3{font-size:clamp(26px,3.4vw,44px);letter-spacing:-.025em;line-height:1.12}
+.pane p{color:var(--mute);font-size:18px;margin-bottom:14px}
+.pane .btn{margin-top:14px}
+@media(max-width:860px){.pane.on{grid-template-columns:1fr;gap:20px;padding:30px}}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:28px;overflow:hidden;margin-top:56px}
+.stat{background:var(--bg);padding:44px 26px}
+.stat .v{font-size:clamp(44px,6vw,84px);font-weight:600;letter-spacing:-.04em;line-height:1}
+.stat .v em{font-style:normal;color:var(--gaea)}
+.stat .k{color:var(--mute);margin-top:12px;font-size:15px}
+@media(max-width:860px){.stats{grid-template-columns:1fr 1fr}}
+.pill-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.pill{border:1px solid var(--line);background:var(--slate);border-radius:18px;padding:18px 22px}
+.pill b{display:block;font-size:28px;letter-spacing:-.02em}
+.pill span{color:var(--mute);font-size:14px}
+/* listings */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:48px}
+.home{border:1px solid var(--line);background:var(--slate);border-radius:22px;padding:28px;display:flex;flex-direction:column;gap:10px;transition:.25s}
+.home:hover{background:var(--slate2)}
+.home .p{font-size:36px;font-weight:600;letter-spacing:-.03em}
+.home .a{font-size:17px}
+.home .m{color:var(--mute);font-size:14px}
+.home .d{color:var(--mute);font-size:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tag{align-self:flex-start;font-size:12px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(63,155,120,.5);color:var(--gaea);padding:4px 10px;border-radius:99px}
+.home .btn{margin-top:auto;text-align:center;padding:12px}
+/* worth */
+.worth{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.form{border:1px solid var(--line);background:var(--slate);border-radius:28px;padding:34px;display:grid;gap:12px}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.note{color:var(--mute);font-size:13px}
+.trust{margin-top:34px;display:grid;gap:14px}
+.trust div{border-left:2px solid rgba(63,155,120,.55);padding-left:18px;color:var(--mute);font-size:18px}
+.trust b{color:var(--ink);font-weight:500}
+@media(max-width:860px){.worth{grid-template-columns:1fr}}
+/* testimony */
+.rv{columns:2 340px;column-gap:16px;margin-top:48px}
+.rv figure{break-inside:avoid;border:1px solid var(--line);background:var(--slate);border-radius:22px;padding:28px;margin-bottom:16px}
+.stars{color:var(--gaea);letter-spacing:.2em;font-size:15px}
+.rv blockquote{font-size:19px;margin:14px 0 18px;letter-spacing:-.005em}
+.rv figcaption{color:var(--mute);font-size:14px}
+.rv figcaption b{color:var(--ink);font-weight:500}
+.rv blockquote{font-size:17px;line-height:1.6}
+.rv blockquote.clamp{display:-webkit-box;-webkit-line-clamp:8;-webkit-box-orient:vertical;overflow:hidden}
+.more{background:none;border:0;color:var(--gaea);font:500 14px var(--sf);cursor:pointer;padding:0;margin:-6px 0 16px}
+.sold{margin-top:22px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--slate)}
+.srow{display:grid;grid-template-columns:130px 1.6fr 1fr 130px;gap:16px;align-items:baseline;padding:16px 24px;border-top:1px solid var(--line)}
+.srow:first-child{border-top:0}
+.srow b{font-size:20px;font-weight:600;letter-spacing:-.02em}
+.srow i{font-style:normal;color:var(--mute);font-size:14px}
+.srow i:last-child{text-align:right}
+@media(max-width:860px){.srow{grid-template-columns:1fr 1fr;gap:4px 12px;padding:14px 18px}.srow span{grid-column:1/-1;order:-1}.srow i{white-space:nowrap}.srow i:last-child{grid-column:1/-1;text-align:left}.lang button{white-space:nowrap}.brand{font-size:15px}.srow b{font-size:18px}}
+/* about */
+.about p{color:var(--mute);font-size:19px;margin-top:14px;max-width:820px}
+.about h3{margin-top:44px;font-size:28px}
+.about h3 span{color:var(--gaea)}
+.creed{font-size:clamp(28px,4.2vw,56px);font-weight:600;letter-spacing:-.03em;margin-top:70px;line-height:1.15}
+/* chat */
+.chat{position:fixed;right:20px;bottom:20px;z-index:60}
+.chat .fab{border:1px solid var(--line);backdrop-filter:blur(14px);background:rgba(88,98,106,.5);color:var(--ink);font:600 15px var(--sf);padding:14px 22px;border-radius:99px;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+footer{border-top:1px solid var(--line);padding:60px 0;color:var(--mute);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.reveal{opacity:0;transform:translateY(24px);transition:1s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top">CINDY YANG <i>·</i> ΓΑΙΑ</a>
+  <div class="links">
+    <a href="#talk"><span data-l="en">Talk to me</span><span data-l="zh">与我交流</span></a>
+    <a href="#record"><span data-l="en">Track Record</span><span data-l="zh">成交战绩</span></a>
+    <a href="#gallery"><span data-l="en">Gallery</span><span data-l="zh">房源</span></a>
+    <a href="#worth"><span data-l="en">Home Value</span><span data-l="zh">房屋估值</span></a>
+    <a href="#testimony"><span data-l="en">Testimony</span><span data-l="zh">客户评价</span></a>
+    <a href="#gaea">Gaea Realty</a>
+  </div>
+  <div class="lang"><button id="bEn" class="on" onclick="setLang('en')">EN</button><button id="bZh" onclick="setLang('zh')">中文</button></div>
+</div></nav>
+
+<header class="hero" id="top"><div class="wrap hero-grid">
+  <div>
+    <div class="eyebrow reveal"><b>Γ</b> &nbsp;<span data-l="en">Gaea Realty · Silicon Valley</span><span data-l="zh">Gaea 家易地产 · 硅谷</span></div>
+    <h1 class="reveal" style="margin-top:26px">
+      <span data-l="en">Talk to me.<small>Cindy Yang — real estate investor, founder, and a woman who turns responsibility into results for her clients.</small></span>
+      <span data-l="zh">与我聊聊。<small>Cindy Yang｜地产投资人 · 企业创始人 · 女性赋能践行者。把责任，变成对客户的结果。</small></span>
+    </h1>
+    <div class="talk reveal" id="talk">
+      <label><span data-l="en">Ask me anything — homes, value, schools, life in the Bay</span><span data-l="zh">想问什么都可以 —— 买房、估值、学区、湾区生活</span></label>
+      <div class="row">
+        <input id="q" data-ph-en="e.g. Is this a good time to sell in Palo Alto?" data-ph-zh="例如：现在在 Palo Alto 卖房合适吗？" placeholder="e.g. Is this a good time to sell in Palo Alto?">
+        <button class="btn" onclick="ask()"><span data-l="en">Send</span><span data-l="zh">发送</span></button>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+  </div>
+  <div class="photo reveal"><img src="cindy.png" alt="Cindy Yang"><span>CINDY YANG · GAEA</span></div>
+</div></header>
+
+<section><div class="wrap">
+  <div class="eyebrow"><b>Α</b> &nbsp;<span data-l="en">Start here</span><span data-l="zh">从这里开始</span></div>
+  <h2 style="margin-top:18px"><span data-l="en">One conversation.<br>Three ways in.</span><span data-l="zh">一次交谈，<br>三个入口。</span></h2>
+  <div class="intents">
+    <a class="card reveal" href="#gallery"><div class="n">01</div><h3>Get House</h3><p><span data-l="en">See Cindy’s current listings across Palo Alto, Mountain View, San Jose and beyond — then tell her what you’re looking for.</span><span data-l="zh">浏览 Cindy 在 Palo Alto、Mountain View、San Jose 等地的在售房源，再告诉她你想要什么。</span></p></a>
+    <a class="card reveal" href="#worth"><div class="n">02</div><h3>Get Value</h3><p><span data-l="en">What’s my house worth? A real answer from real comps — not an algorithm’s guess.</span><span data-l="zh">我的房子值多少？基于真实成交的判断，而不是算法的猜测。</span></p></a>
+    <a class="card reveal" href="#talk" onclick="focusQ()"><div class="n">03</div><h3>Talk to Me</h3><p><span data-l="en">Education, family, relocation, investing, starting a business — ask the question behind the question.</span><span data-l="zh">教育、家庭、搬迁、投资、创业 —— 问出问题背后的那个问题。</span></p></a>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow"><b>Β</b> &nbsp;<span data-l="en">Who I am</span><span data-l="zh">我是谁</span></div>
+  <h2 style="margin-top:18px"><span data-l="en">Talk to me —<br>as…</span><span data-l="zh">请与我交流 ——<br>以这些身份：</span></h2>
+  <div class="tabs">
+    <button class="tab on" data-t="adv"><span data-l="en">an Advocate</span><span data-l="zh">倡导者</span></button>
+    <button class="tab" data-t="ent"><span data-l="en">an Entrepreneur</span><span data-l="zh">创业者</span></button>
+    <button class="tab" data-t="mom"><span data-l="en">a Mother</span><span data-l="zh">母亲</span></button>
+  </div>
+  <div class="pane on" id="adv">
+    <div><h3><span data-l="en">Empowering women to build independence.</span><span data-l="zh">让女性拥有自己的事业与独立。</span></h3></div>
+    <div><p><span data-l="en">A delegate to the 2027 UN Women’s conference, Cindy keeps one question at the center: how does growth become opportunity for others? Ask her about careers, confidence, returning to work, or building something of your own.</span><span data-l="zh">作为 2027 年联合国妇女代表大会参会代表，Cindy 始终关心：个人成长，如何变成他人的机会？职业、自信、重返职场、开始自己的事业 —— 都可以聊。</span></p>
+    <button class="btn" onclick="seed('I’d like to talk about women’s career and empowerment.','我想聊聊女性职业发展与赋能。')"><span data-l="en">Ask Cindy</span><span data-l="zh">向 Cindy 提问</span></button></div>
+  </div>
+  <div class="pane" id="ent">
+    <div><h3><span data-l="en">From SOHO Asian Fusion to Silicon Valley property.</span><span data-l="zh">从 SOHO Asian Fusion 到硅谷地产。</span></h3></div>
+    <div><p><span data-l="en">Founder of restaurant brand SOHO Asian Fusion and co-founder of Gaea Realty. She builds teams, creates jobs — especially for women — and has personally run residential addition, remodel and rebuild projects in the Valley.</span><span data-l="zh">餐饮品牌 SOHO Asian Fusion 创始人、Gaea 家易地产联合创始人。她组建团队、创造就业（尤其为女性），并亲自操盘硅谷住宅加建、改建与重建项目。</span></p>
+    <button class="btn" onclick="seed('I’m an entrepreneur thinking about real estate investing.','我是创业者，想了解地产投资。')"><span data-l="en">Ask Cindy</span><span data-l="zh">向 Cindy 提问</span></button></div>
+  </div>
+  <div class="pane" id="mom">
+    <div><h3><span data-l="en">Choosing a home is choosing a life for your family.</span><span data-l="zh">选一个家，就是为家人选择一种生活。</span></h3></div>
+    <div><p><span data-l="en">Schools, commute, community, space to grow. Cindy answers as a parent first, then as an agent — with the patience and honesty her clients mention again and again.</span><span data-l="zh">学区、通勤、社区、成长空间。Cindy 先以母亲的角度、再以经纪人的角度回答 —— 客户一再提到的耐心与坦诚。</span></p>
+    <button class="btn" onclick="seed('We’re a family looking for a home with good schools.','我们是家庭买家，想找学区好的房子。')"><span data-l="en">Ask Cindy</span><span data-l="zh">向 Cindy 提问</span></button></div>
+  </div>
+</div></section>
+
+<section class="about"><div class="wrap">
+  <div class="eyebrow"><b>Γ</b> &nbsp;<span data-l="en">Growth · Responsibility · Service</span><span data-l="zh">成长 · 责任 · 服务</span></div>
+  <h2 style="margin-top:18px"><span data-l="en">Build a career with expertise.<br>Expand boundaries with action.</span><span data-l="zh">以专业建立事业，<br>以行动拓展边界。</span></h2>
+  <p><span data-l="en">From the Texas A&amp;M Corps of Cadets to Silicon Valley real estate, from hands-on investing to restaurant entrepreneurship — sixteen years of study, life and investing in the U.S., turned into judgment, execution, and the ability to create opportunity.</span><span data-l="zh">从 Texas A&amp;M 军校到硅谷地产，从投资实战到餐饮创业，Cindy 将 16 年在美求学、生活与投资经历，转化为判断力、执行力与创造机会的能力。</span></p>
+  <h3><span>Δ</span> <span data-l="en">Education &amp; leadership — a foundation built under strict training</span><span data-l="zh">教育与领导力｜在严格训练中建立底色</span></h3>
+  <p><span data-l="en">Texas A&amp;M University graduate in Economics and Finance. Former honor officer of the Corps of Cadets, scholarship recipient, and one of only three Asian women in her class. Military-school life shaped her discipline, accountability, and the resilience to get things done under pressure.</span><span data-l="zh">毕业于 Texas A&amp;M University，拥有经济与金融本科学历。曾为 Corps of Cadets 荣誉军官、奖学金获得者，也是同届仅有的三位亚裔女性之一。军校生活塑造了她的自律、担当，以及面对压力时推动事情落地的韧性。</span></p>
+  <h3><span>Ε</span> <span data-l="en">Real estate &amp; investing — judgment from practice, trust from results</span><span data-l="zh">地产与投资｜用实战积累判断，用结果建立信任</span></h3>
+  <p><span data-l="en">Co-founder of Gaea Realty and a veteran investor, with nearly $300M in closed volume and single transactions above $10M. She personally leads Silicon Valley addition, remodel and rebuild projects — turning investment judgment into concrete action.</span><span data-l="zh">作为硅谷 GAEA 家易地产联合创始人、资深地产投资人，累计成交金额近 3 亿美元，单笔成交金额超过 1,000 万美元。亲自操盘硅谷住宅加建、改建与重建项目，将投资判断落实为具体行动。</span></p>
+  <h3><span>Ζ</span> <span data-l="en">Entrepreneurship &amp; empowerment — turning growth into opportunity</span><span data-l="zh">创业与女性赋能｜把个人成长转化为更多人的机会</span></h3>
+  <p><span data-l="en">As founder of SOHO Asian Fusion, she connects entrepreneurship with women’s employment — creating jobs and supporting career growth and financial independence. As a delegate to the 2027 UN Women’s conference, she keeps working to make empowerment real in everyday work and life.</span><span data-l="zh">作为餐饮品牌 SOHO Asian Fusion 创始人，她将创业与女性就业相连接，为女性创造工作机会，支持职业成长与经济独立。作为 2027 年联合国妇女代表大会参会代表，她让赋能落在真实的工作与生活中。</span></p>
+  <div class="creed"><span data-l="en">Integrity first. Action first. Long-term thinking.</span><span data-l="zh">诚信为本，行动为先，长期主义。</span></div>
+  <p><span data-l="en">In a finite life — go further, see a bigger world, and open the door for more women.</span><span data-l="zh">在有限的人生里，走更远的路，看更大的世界，也为更多女性打开可能。</span></p>
+</div></section>
+
+<section id="record"><div class="wrap">
+  <div class="eyebrow"><b>Ε</b> &nbsp;Track Record</div>
+  <h2 style="margin-top:18px"><span data-l="en">A strong portfolio.<br>Every home sold, a promise kept.</span><span data-l="zh">一份扎实的战绩。<br>每一套成交，都是一次兑现。</span></h2>
+  <p class="lead" style="margin-top:22px"><span data-l="en">With my whole heart, I bring trustworthy results. For sellers, trust is not a slogan — it is the sold sign.</span><span data-l="zh">我用全部诚意，带来值得信赖的结果。对卖家而言，信任不是口号，而是成交的那一刻。</span></p>
+  <div class="stats">
+    <div class="stat"><div class="v"><em data-count="171">0</em>+</div><div class="k"><span data-l="en">Homes closed</span><span data-l="zh">成交套数</span></div></div>
+    <div class="stat"><div class="v">$<em data-count="304">0</em>M+</div><div class="k"><span data-l="en">Total sales volume</span><span data-l="zh">累计成交金额</span></div></div>
+    <div class="stat"><div class="v">$<em data-count="11.6" data-dec="1">0</em>M</div><div class="k"><span data-l="en">Largest single transaction</span><span data-l="zh">单笔最高成交</span></div></div>
+    <div class="stat"><div class="v"><em data-count="52">0</em></div><div class="k"><span data-l="en">Five-star reviews · Zillow + Google</span><span data-l="zh">五星评价 · Zillow + Google</span></div></div>
+  </div>
+  <div class="pill-row">
+    <div class="pill"><b>32</b><span data-l="en">seller transactions in the past year · $56.2M</span><span data-l="zh">过去一年卖方成交 · $56.2M</span></div>
+    <div class="pill"><b>80</b><span data-l="en">seller-side deals in 5 years · $122M</span><span data-l="zh">五年卖方成交 · $122M</span></div>
+    <div class="pill"><b>$1.8M</b><span data-l="en">average price · range $665K – $11.6M</span><span data-l="zh">平均成交价 · 区间 $665K – $11.6M</span></div>
+  </div>
+  <p class="note" style="margin-top:18px"><span data-l="en">Source: Homes.com and Zillow agent profiles, figures as displayed at time of build; MLS-verified list of closed sales available on request.</span><span data-l="zh">数据来源：Homes.com 与 Zillow 经纪人主页（页面显示数据）；经 MLS 核验的成交清单可按需提供。</span></p>
+  <h3 style="margin-top:64px;font-size:28px"><span data-l="en">Homes sold for sellers</span><span data-l="zh">为卖家售出的房子</span></h3>
+  <div class="sold" id="sold"></div>
+  <button class="btn ghost" id="soldMore" style="margin-top:18px"></button>
+  <p class="note" style="margin-top:14px"><span data-l="en">Seller-side closed sales as shown on Cindy’s public Zillow profile (most recent 63 on record). Prices above $1M are shown to the nearest thousand.</span><span data-l="zh">卖方成交记录来自 Cindy 的 Zillow 公开主页（最近 63 笔）。100 万美元以上的价格取到千位。</span></p>
+</div></section>
+
+<section id="gallery"><div class="wrap">
+  <div class="eyebrow"><b>Ζ</b> &nbsp;Gallery</div>
+  <h2 style="margin-top:18px"><span data-l="en">Current listings.</span><span data-l="zh">在售房源。</span></h2>
+  <div class="grid" id="homes"></div>
+</div></section>
+
+<section id="worth"><div class="wrap worth">
+  <div>
+    <div class="eyebrow"><b>Η</b> &nbsp;Get Value</div>
+    <h2 style="margin-top:18px"><span data-l="en">What’s my house worth?</span><span data-l="zh">我的房子值多少？</span></h2>
+    <p class="lead" style="margin-top:20px"><span data-l="en">Tell me about your home. I’ll come back with a real market analysis — comparable sales, pricing strategy, and a plan.</span><span data-l="zh">告诉我你的房子。我会回复一份真实的市场分析 —— 可比成交、定价策略与行动方案。</span></p>
+    <div class="trust">
+      <div><b><span data-l="en">Trust.</span><span data-l="zh">信任。</span></b> <span data-l="en">With my whole heart, results you can rely on.</span><span data-l="zh">以全部诚意，交付可以依赖的结果。</span></div>
+      <div><b><span data-l="en">Portfolio.</span><span data-l="zh">战绩。</span></b> <span data-l="en">Every home we’ve sold is part of a strong portfolio.</span><span data-l="zh">我们卖出的每一套房，都是一份扎实的作品集。</span></div>
+    </div>
+  </div>
+  <form class="form" onsubmit="worth(event)">
+    <input id="wa" required placeholder="Property address / 房屋地址">
+    <div class="two"><input id="wn" required placeholder="Name / 姓名"><input id="wc" required placeholder="Phone or email / 电话或邮箱"></div>
+    <select id="wt"><option>When are you thinking of selling? / 计划何时出售？</option><option>Now / 现在</option><option>3–6 months / 3–6 个月</option><option>Just curious / 只是了解</option></select>
+    <button class="btn" type="submit"><span data-l="en">Get my home value</span><span data-l="zh">获取房屋估值</span></button>
+    <span class="note"><span data-l="en">Opens your email app with the details prefilled.</span><span data-l="zh">将打开邮件应用并预填信息。</span></span>
+  </form>
+</div></section>
+
+<section id="testimony"><div class="wrap">
+  <div class="eyebrow"><b>Θ</b> &nbsp;Testimony</div>
+  <h2 style="margin-top:18px"><span data-l="en">5.0 stars.<br>In their words.</span><span data-l="zh">5.0 星。<br>来自客户的原话。</span></h2>
+  <p class="lead" style="margin-top:20px"><span data-l="en">52 five-star reviews — 36 on Zillow, 16 on Google. Every one of them, in full.</span><span data-l="zh">52 条五星评价 —— Zillow 36 条，Google 16 条。全文呈现，一条不落。</span></p>
+  <div class="tabs" id="rvf">
+    <button class="tab on" data-k="s"><span data-l="en">Sellers</span><span data-l="zh">卖家</span></button>
+    <button class="tab" data-k="b"><span data-l="en">Buyers</span><span data-l="zh">买家</span></button>
+    <button class="tab" data-k="all"><span data-l="en">All</span><span data-l="zh">全部</span></button>
+  </div>
+  <div class="rv" id="rv" style="margin-top:0"></div>
+  <p class="note"><span data-l="en">Verbatim from Cindy’s public Zillow and Google Business profiles, in the clients’ original words. Reviews posted on both sites are shown once.</span><span data-l="zh">原文摘自 Cindy 的 Zillow 与 Google 商家公开页面，保留客户原话；两处重复发布的评价只显示一次。</span></p>
+</div></section>
+
+<section id="gaea"><div class="wrap">
+  <div class="eyebrow"><b>Ι</b> &nbsp;Gaea Realty · <span class="greek">ΓΑΙΑ</span></div>
+  <h2 style="margin-top:18px"><span data-l="en">Gaea — the ground<br>everything grows from.</span><span data-l="zh">Gaea —— 万物生长的大地。</span></h2>
+  <p class="lead" style="margin-top:22px"><span data-l="en">Gaea Realty (家易地产) is a Silicon Valley brokerage built on integrity, action and long-term relationships. Cindy is a co-founder.</span><span data-l="zh">Gaea 家易地产是一家立足硅谷、以诚信、行动与长期关系为本的经纪公司。Cindy 为联合创始人之一。</span></p>
+  <a class="btn" style="display:inline-block;margin-top:28px" href="https://www.gaearealty.com" target="_blank" rel="noopener">gaearealty.com</a>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="brand">CINDY YANG <i>·</i> ΓΑΙΑ REALTY</div>
+  <div>cindy.gaearealty.com</div>
+  <div class="note">© 2026 Gaea Realty. Cindy Yang, licensed Realtor.</div>
+</div></footer>
+
+<div class="chat"><button class="fab" onclick="focusQ()">✦ <span data-l="en">Talk to Cindy</span><span data-l="zh">与 Cindy 交流</span></button></div>
+
+<script src="data.js"></script>
+<script>
+const CONTACT="cindy@gaearealty.com";
+const T={
+ prompts:{en:["I want to buy a home","What’s my house worth?","Best school districts?","Relocating to the Bay Area","Investing in rental property","I’m a woman starting a business"],
+          zh:["我想买房","我的房子值多少？","哪些学区最好？","搬到湾区","投资出租房","我是女性创业者"]},
+ homes:[
+  {p:"$1,998,000",a:"742 Homer Ave, Palo Alto",m:"3 bd · 2 ba · 788 sqft",d:"Abundant natural light, updated kitchen with gas stove, and a skylit attic with installed flooring.",s:""},
+  {p:"$2,588,000",a:"182 Melia Loop, Mountain View",m:"3 bd · 2.5 ba · 1,812 sqft",d:"Whisman Station, 2018-built single family home with a gourmet kitchen and spa-inspired primary suite.",s:"Co-listing"},
+  {p:"$1,450,000",a:"114 Granada Dr, Mountain View",m:"3 bd · 2.5 ba · 1,422 sqft",d:"Quiet, private, move-in ready end-unit townhome with detached garage and landscaped backyard.",s:"Co-listing"},
+  {p:"$929,888",a:"1949 Mahuron Cir, San Jose",m:"3 bd · 3 ba · 1,667 sqft",d:"Onyx community floor plan facing the park, with high ceilings and a modern kitchen.",s:""},
+  {p:"$840,000",a:"192 William Manly St #6, San Jose",m:"2 bd · 2 ba · 1,668 sqft",d:"Communications Hill home with oversized windows and a large private balcony.",s:"Under contract"}
+ ],
+ sold:[["$11.56M","Largest sale"],["$4.65M","Sold"],["$4.50M","Sold"],["$3.88M","Sold"],["$3.78M","Sold · co-list"],["$3.70M","Sold"]],
+ rv:[
+  ["Cindy helped us sell our home. She was professional, responsive, and knowledgeable throughout the process, and everything went smoothly from listing to closing. We felt well taken care of and would gladly work with her again.","jeremyjiezhou","Seller · Belmont · Nov 2026"],
+  ["We were very impressed by their level of preparation and expertise. They came into the meeting with a thorough analysis of the comparable real estate market in our neighborhood…","Hsuamyjo","Seller · Santa Clara · Oct 2026"],
+  ["She has a strong understanding of the local market and gave us thoughtful, practical advice throughout the entire process…","Katherine Zhang","Seller · Fremont · Sep 2026"],
+  ["Cindy has helped me sell several houses, and every experience with her has been exceptional. Cindy is professional, knowledgeable, responsive, and truly goes above and beyond to make the entire process as smooth and stress-free as possible.","Suzanna Chen","Seller · San Leandro · Sep 2026"],
+  ["Cindy helped us to sell our house. She is professional, knowledgeable, dedicated, and great to work with. She is very responsive and always doing her best to make the transaction as easy and smooth as possible.","Chia-Hsin Tang","Seller · May 2026"],
+  ["Cindy did an outstanding job throughout the whole selling process. She knows the market and knows how to reach the buyers, and prepared the best strategy to sell. She knows what to communicate to us and what to handle by herself…","ChenranLi","Seller · May 2026"],
+  ["We had a great experience working with Cindy. She is very patient, honest, and professional throughout the entire process. She truly cared about our family’s needs…","yan y926","Client · Feb 2026"],
+  ["We feel so lucky to have worked with Cindy! She was incredibly patient and genuine throughout the entire home-buying process. She never pushed us to make decisions…","yanglanou","Buyer · Oct 2025"],
+  ["Incredible experience! Cindy is professional, knowledgeable, and genuinely cares about her clients. She made finding my home easy and efficient. I would recommend her to anyone!","LynnJiang2","Buyer · May 2026"]
+ ]
+};
+const $=s=>document.querySelector(s);
+function setLang(l){document.documentElement.lang=l;$('#bEn').classList.toggle('on',l==='en');$('#bZh').classList.toggle('on',l==='zh');
+  $('#q').placeholder=$('#q').dataset['ph'+l[0].toUpperCase()+l.slice(1)]||$('#q').dataset.phEn;$('#q').placeholder=$('#q').getAttribute('data-ph-'+l);
+  chips();if(window.sold){sold();rv()}try{localStorage.lang=l}catch(e){}}
+function chips(){const l=document.documentElement.lang;$('#chips').innerHTML=T.prompts[l].map((t,i)=>`<button class="chip" onclick="$('#q').value=this.textContent;ask()">${t}</button>`).join('')}
+function focusQ(){$('#talk').scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>$('#q').focus(),500)}
+function seed(en,zh){$('#q').value=document.documentElement.lang==='zh'?zh:en;focusQ()}
+function ask(){const q=$('#q').value.trim();if(!q){$('#q').focus();return}
+  location.href=`mailto:${CONTACT}?subject=${encodeURIComponent('Question for Cindy')}&body=${encodeURIComponent(q)}`}
+function worth(e){e.preventDefault();const b=`Address: ${$('#wa').value}\nName: ${$('#wn').value}\nContact: ${$('#wc').value}\nTimeline: ${$('#wt').value}`;
+  location.href=`mailto:${CONTACT}?subject=${encodeURIComponent("What's my house worth?")}&body=${encodeURIComponent(b)}`}
+$('#homes').innerHTML=T.homes.map(h=>`<div class="home">${h.s?`<span class="tag">${h.s}</span>`:''}<div class="p">${h.p}</div><div class="a">${h.a}</div><div class="m">${h.m}</div><div class="d">${h.d}</div><a class="btn ghost" href="#talk" onclick="seed('I’m interested in ${h.a}.','我对 ${h.a} 感兴趣。')">Ask about this home</a></div>`).join('');
+/* sold list */
+let soldAll=false;
+const ago=w=>{const n=parseInt(w),u=w.slice(-1),zh=document.documentElement.lang==='zh';
+  return zh?`${n} ${u==='d'?'天':u==='m'?'个月':'年'}前`:`${n} ${u==='d'?'days':u==='m'?'mo':n>1?'yrs':'yr'} ago`};
+function sold(){const zh=document.documentElement.lang==='zh',S=window.CY_SOLD||[];
+  $('#sold').innerHTML=(soldAll?S:S.slice(0,12)).map(r=>{const[b,ba,sf]=r[2].split('/');
+    return `<div class="srow"><b>${r[0]}</b><span>${r[1]}</span><i>${b} bd · ${ba} ba · ${sf} sqft</i><i>${zh?'售出 · ':'Sold · '}${ago(r[3])}</i></div>`}).join('');
+  $('#soldMore').textContent=soldAll?(zh?'收起':'Show fewer'):(zh?`查看全部 ${S.length} 笔`:`Show all ${S.length} sales`)}
+$('#soldMore').onclick=()=>{soldAll=!soldAll;sold()};
+/* reviews */
+let rvK='s';
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+function rv(){const zh=document.documentElement.lang==='zh',R=(window.CY_REVIEWS||[]).filter(r=>rvK==='all'||r.k===rvK||(rvK==='b'&&r.k==='c'));
+  $('#rv').innerHTML=R.map(r=>{const long=r.t.length>520;
+    return `<figure><div class="stars">★★★★★</div><blockquote class="${long?'clamp':''}">${esc(r.t).replace(/\n\n/g,'<br><br>')}</blockquote>${long?`<button class="more" onclick="const q=this.previousElementSibling;q.classList.toggle('clamp');this.textContent=q.classList.contains('clamp')?'${zh?'展开全文':'Read full review'}':'${zh?'收起':'Show less'}'">${zh?'展开全文':'Read full review'}</button>`:''}<figcaption><b>${esc(r.n)}</b> · ${r.w} · ${r.d} · ${r.src==='Z'?'Zillow':'Google'}</figcaption></figure>`}).join('')}
+document.querySelectorAll('#rvf .tab').forEach(t=>t.addEventListener('click',()=>{document.querySelectorAll('#rvf .tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');rvK=t.dataset.k;rv()}));
+document.querySelectorAll('.tab[data-t]').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab[data-t],.pane').forEach(x=>x.classList.remove('on'));t.classList.add('on');$('#'+t.dataset.t).classList.add('on')});
+/* count-up */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);
+  if(e.target.dataset.count){const el=e.target,max=+el.dataset.count,d=+el.dataset.dec||0,t0=performance.now();
+   (function f(t){const p=Math.min((t-t0)/2200,1),v=max*(1-Math.pow(1-p,4));el.textContent=v.toFixed(d);if(p<1)requestAnimationFrame(f)})(t0)}
+  else e.target.classList.add('in')}),{threshold:.25});
+document.querySelectorAll('[data-count],.reveal').forEach(el=>io.observe(el));
+let l='en';try{l=localStorage.lang||(navigator.language.startsWith('zh')?'zh':'en')}catch(e){}
+setLang(l);
+</script>
+</body>
+</html>
