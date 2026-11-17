@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog · Cindy Yang · Gaea Realty</title>
+<meta name="description" content="Cindy Yang’s blog — growth, education, women’s empowerment, home improvement and selling a home in Silicon Valley.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<nav><div class="wrap">
+  <a class="brand" href="index.html">CINDY YANG <i>·</i> GAEA</a>
+  <div class="links">
+    <a href="index.html#top"><span data-l="en">Home Value</span><span data-l="zh">房屋估值</span></a>
+    <a href="index.html#record"><span data-l="en">Track Record</span><span data-l="zh">成交战绩</span></a>
+    <a href="index.html#about"><span data-l="en">About</span><span data-l="zh">关于 Cindy</span></a>
+    <a href="blog.html"><span data-l="en">Blog</span><span data-l="zh">博客</span></a>
+  </div>
+  <div class="lang"><button data-lang-btn="en" onclick="setLang('en')">EN</button><button data-lang-btn="zh" onclick="setLang('zh')">中文</button></div>
+</div></nav>
+
+<main class="wrap" style="padding-top:64px;padding-bottom:110px" id="main"></main>
+
+<footer><div class="wrap">
+  <div class="brand">CINDY YANG <i>·</i> GAEA REALTY</div>
+  <div><a href="index.html">Home</a> &nbsp;·&nbsp; <a href="mailto:cindy@gaearealty.com">cindy@gaearealty.com</a> &nbsp;·&nbsp; <a href="admin/">Admin</a></div>
+  <div class="note">© 2026 Gaea Realty.</div>
+</div></footer>
+
+<script src="site.js"></script>
+<script>
+let POSTS=[];
+const T=(p,k)=>isZh()?(p[k+'_zh']||p[k+'_en']):(p[k+'_en']||p[k+'_zh']);
+function render(){
+  const slug=new URLSearchParams(location.search).get('p');
+  const p=slug&&POSTS.find(x=>x.slug===slug);
+  if(p){
+    document.title=T(p,'title')+' · Cindy Yang';
+    document.querySelector('meta[name=description]').content=T(p,'excerpt')||'';
+    $('#main').innerHTML=`<article class="article">
+      <a class="note" href="blog.html">← ${isZh()?'全部文章':'All posts'}</a>
+      <div class="eyebrow" style="margin-top:28px"><b>Blog</b> &nbsp;${esc(p.date)}</div>
+      <h1 style="margin-top:16px">${esc(T(p,'title'))}</h1>
+      <p class="lead" style="margin-top:18px">${esc(T(p,'excerpt'))}</p>
+      <div style="display:flex;align-items:center;gap:14px;margin-top:28px"><img src="cindy.png" alt="" style="width:52px;height:52px;border-radius:50%;object-fit:cover"><div><b>Cindy Yang</b><div class="note">Gaea Realty · ${isZh()?'硅谷':'Silicon Valley'}</div></div></div>
+      <div class="body">${md(T(p,'body'))}</div>
+      <div class="glass" style="border-radius:24px;padding:28px;margin-top:40px">
+        <h3>${isZh()?'想聊聊你的房子，或者别的？':'Want to talk about your home — or anything else?'}</h3>
+        <p class="note" style="margin:8px 0 16px;font-size:15px">${isZh()?'输入地址和房屋状况，我会亲自回复。':'Type your address and condition; I reply personally.'}</p>
+        <a class="btn" href="index.html#top">${isZh()?'我的房子值多少？':'What’s my home worth?'}</a>
+      </div></article>`;
+  } else {
+    document.title='Blog · Cindy Yang · Gaea Realty';
+    const P=POSTS.filter(x=>x.published!==false);
+    $('#main').innerHTML=`<div class="eyebrow"><b>Blog</b> &nbsp;${isZh()?'成长 · 教育 · 女性 · 房屋':'Growth · Education · Women · Homes'}</div>
+      <h2 style="margin-top:16px">${isZh()?'写给想走得更远的人。':'Notes for people who want to go further.'}</h2>
+      <div class="posts">${P.map(p=>`<a class="post-card glass" href="blog.html?p=${encodeURIComponent(p.slug)}">${p.cover?`<div class="cv" style="background-image:url('${esc(p.cover)}')"></div>`:''}<div class="in"><div class="note">${esc(p.date)}</div><h3>${esc(T(p,'title'))}</h3><p>${esc(T(p,'excerpt'))}</p></div></a>`).join('')||`<p class="lead">${isZh()?'即将更新。':'Coming soon.'}</p>`}</div>`;
+  }
+}
+CY.langHooks.push(render);
+initLang();
+loadJSON('blog').then(b=>{POSTS=(b.posts||[]).sort((a,b)=>b.date.localeCompare(a.date));render()});
+</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-/* Cindy Yang — reviews (Zillow + Google, de-duplicated) and seller-side closed sales (Zillow public record).
+/* Cindy Yang — reviews (Zillow + Google, de-duplicated) (closed sales now live in content/sales.json).
    Captured 2026-11-16. Review text is verbatim from the source pages.
    k: s = seller, b = buyer, c = client (side not stated).  src: Z = Zillow, G = Google */
 window.CY_REVIEWS=[
@@ -100,69 +100,6 @@ Cindy shows her profession with her knowledge of bay area properties. We relied 
 ];
 
 /* Seller-side closed sales shown on Cindy's public Zillow profile: price | address | bd/ba/sqft | sold (relative to Nov 2026) */
-window.CY_SOLD=`$1.895M|2366 Fatjo Pl, Santa Clara|5/3/2,115|22d
-$625,000|984 Belmont Ter Unit 10, Sunnyvale|2/1/854|29d
-$1.760M|34427 Bacon Pl, Fremont|3/2/1,620|2m
-$2.472M|40220 Hacienda Ct, Fremont|4/3/1,914|2m
-$1.250M|521 Porpoise Bay Ter APT B, Sunnyvale|3/3/1,832|3m
-$1.050M|756 Victoria Ave, San Leandro|5/3/2,400|3m
-$1.680M|2927 Kaiser Dr, Santa Clara|3/4/1,727|6m
-$2.618M|1609 Molitor Rd, Belmont|4/3/1,910|6m
-$3.000M|1033 Yorktown Dr, Sunnyvale|4/2/1,440|6m
-$1.638M|2896 Barrington Ter, Fremont|3/3/1,755|6m
-$450,000|355 1st St Unit S208, San Francisco|--/1/432|6m
-$1.810M|3224 Orange St, San Jose|4/3/1,971|6m
-$4.500M|114 Bayswater Ave, Burlingame|5/6/3,046|7m
-$1.468M|1152 La Rochelle Ter Unit F, Sunnyvale|3/3/2,156|8m
-$1.975M|2020 Thea Cir, Mountain View|3/4/1,614|9m
-$1.325M|36391 Cherry St, Newark|3/2/1,442|9m
-$950,000|35005 11th St, Union City|4/3/1,431|10m
-$1.260M|930 Highland Trl, Sunnyvale|2/3/1,322|10m
-$1.165M|4288 Macedo Pl, Santa Clara|3/3/1,199|1y
-$1.950M|1566 Willowgate Dr, San Jose|4/3/1,831|1y
-$1.720M|5474 Blossom Wood Dr, San Jose|3/2/1,312|1y
-$2.135M|2230 Crocker Way, Santa Clara|4/2/1,689|1y
-$1.363M|110 Manzanita Ave, South San Francisco|4/3/1,650|1y
-$2.172M|1251 Corsica Ln, Foster City|3/2/1,620|1y
-$870,000|1283 De Altura Cmn, San Jose|2/3/1,127|1y
-$2.350M|400 Chiquita Ave, Mountain View|4/3/1,957|2y
-$1.750M|43434 Mintwood St, Fremont|3/2/1,209|2y
-$360,000|1085 Tasman Dr Spc 381, Sunnyvale|3/2/1,602|2y
-$825,000|3366 Brittan Ave APT 4, San Carlos|2/2/1,040|2y
-$746,688|2294 Sun Glory Ln #B, San Jose|2/2/998|2y
-$1.830M|1773 Widen Ct, San Jose|4/2/1,536|2y
-$2.150M|1435 Old Piedmont Rd, San Jose|4/2/1,743|2y
-$2.940M|1329 Curtiss Ave, San Jose|5/5/2,636|2y
-$2.050M|1964 Junewood Ave, San Jose|5/3/2,002|2y
-$960,000|1901 Baywood Sq, San Jose|3/2/1,240|2y
-$1.911M|725 Georgia Ave, Sunnyvale|3/2/1,150|2y
-$1.115M|3022 Ironside Ct, San Jose|3/3/1,452|2y
-$1.380M|37856 Goldenrod Dr, Newark|3/2/1,166|2y
-$1.520M|1517 Tainan Dr, San Jose|4/3/1,846|2y
-$1.100M|538 Shorebird Cir Unit 22203, Redwood City|2/2/1,667|2y
-$525,000|103 Muir Rd, Martinez|3/2/1,263|2y
-$995,000|4384 Armand Dr, Concord|4/2/2,148|3y
-$1.215M|1360 Civic Center Dr Unit 4, Santa Clara|3/3/1,626|3y
-$1.365M|1263 Summer Blossom Ave, San Jose|4/3/1,869|3y
-$510,000|350 Santa Maria Dr, Fairfield|3/2/1,612|3y
-$625,000|38623 Cherry Ln APT 183, Fremont|2/1.5/940|4y
-$595,000|39975 Cedar Blvd Unit 133, Newark|2/2/1,071|4y
-$1.680M|1444 Madrona Ave, San Jose|4/3/2,064|4y
-$1.060M|5634 Impatiens Cmn, Fremont|3/3/1,118|4y
-$1.175M|914 Beach Park Blvd APT 79, Foster City|2/2/1,087|4y
-$2.820M|2902 Belmont Woods Way, Belmont|3/3/2,850|4y
-$450,000|555 Jean St APT 523, Oakland|1/1/622|5y
-$1.040M|613 Arcadia Ter Unit 302, Sunnyvale|--/--/--|5y
-$1.350M|1430 Gordon St APT O, Redwood City|3/3/1,620|5y
-$475,000|1760 Halford Ave Unit 276, Santa Clara|1/1/678|5y
-$1.280M|2216 Colonial Ct, Walnut Creek|4/3/2,058|5y
-$2.050M|5349 Rancho Del Sur Dr, Fremont|4/3/2,176|5y
-$1.080M|39712 Potrero Dr, Newark|3/2/1,388|5y
-$1.030M|874 Fire Walk, Milpitas|3/3/1,353|5y
-$641,000|3490 Royal Rd, Concord|4/2/1,080|5y
-$865,000|4361 Armand Dr, Concord|4/2/1,892|5y
-$881,000|1341 Rosemary Ln, Concord|4/2/2,376|5y
-$1.100M|1034 Spencer Ave, San Jose|3/2/1,284|6y`.split('\n').map(r=>r.split('|'));
 
 /* Listing photos, linked from Zillow's photo CDN (keyed by street address prefix). Replace with self-hosted files before launch. */
 window.CY_PHOTOS={"742 Homer":"fe703bab5e4c2a362fa7f9651e71aada","1949 Mahuron":"044cffc44ffe3075154bc8d948ad85ad","114 Granada":"fdf1a27f42ec55c1f36c4e455b85848a",
