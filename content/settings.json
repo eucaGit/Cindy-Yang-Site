@@ -1,0 +1,29 @@
+{
+ "updated": "2026-11-17",
+ "contact_email": "cindy@gaearealty.com",
+ "hero_photo": "img/cindy-hero.jpg",
+ "admin": {
+  "password_sha256": "c1c224b03cd9bc7b6a86d77f5dace40191766c485cd55dc48caf9ac873335d6f",
+  "note": "Initial password is Admin. Change it in /admin → Settings. This gate is client-side only; real write access comes from the GitHub token entered in the admin."
+ },
+ "github": { "owner": "eucaGit", "repo": "Cindy-Yang-Site", "branch": "main" },
+ "stats": {
+  "homes_closed": 169,
+  "total_volume_m": 304,
+  "largest_m": 11.56,
+  "reviews": 52,
+  "seller_past_year": "32 · $56.2M",
+  "seller_5yr": "80 · $122M",
+  "avg_price": "$1.8M"
+ },
+ "features": {
+  "blog": { "enabled": true },
+  "valuation_chat": { "enabled": true, "ai_endpoint": "", "note": "Reserved: set ai_endpoint to a server URL that accepts {messages:[...]} and returns {reply:\"...\"} to turn the chat into a live AI assistant." },
+  "lead_webhook": { "enabled": false, "url": "", "note": "Reserved: POST each completed chat/lead to a CRM or Google Sheet webhook." },
+  "mls_idx_feed": { "enabled": false, "provider": "", "note": "Reserved: live MLS/IDX feed (needs an IDX vendor agreement through Cindy's MLS)." },
+  "open_houses": { "enabled": false, "note": "Reserved: open-house calendar module." },
+  "newsletter": { "enabled": false, "url": "", "note": "Reserved: newsletter / market-report sign-up." },
+  "market_reports": { "enabled": false, "note": "Reserved: monthly city market reports." },
+  "video": { "enabled": false, "note": "Reserved: video gallery (YouTube / WeChat Channels)." }
+ }
+}

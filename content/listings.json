@@ -1,0 +1,60 @@
+{
+ "updated": "2026-11-17",
+ "listings": [
+  {
+   "id": "l1",
+   "price": "$1,998,000",
+   "addr": "742 Homer Ave, Palo Alto",
+   "meta": "3 bd · 2 ba · 788 sqft",
+   "status": "For sale",
+   "desc_en": "Abundant natural light, updated kitchen with gas stove, and a skylit attic with installed flooring.",
+   "desc_zh": "采光充足，厨房已翻新并配燃气灶，带天窗阁楼已铺设地板。",
+   "photo": "https://photos.zillowstatic.com/fp/fe703bab5e4c2a362fa7f9651e71aada-cc_ft_768.webp",
+   "visible": true
+  },
+  {
+   "id": "l2",
+   "price": "$2,588,000",
+   "addr": "182 Melia Loop, Mountain View",
+   "meta": "3 bd · 2.5 ba · 1,812 sqft",
+   "status": "Co-listing",
+   "desc_en": "Whisman Station, 2018-built single family home with a gourmet kitchen and spa-inspired primary suite.",
+   "desc_zh": "Whisman Station 社区，2018 年建独栋，厨师级厨房与水疗风主卧套房。",
+   "photo": "",
+   "visible": true
+  },
+  {
+   "id": "l3",
+   "price": "$1,450,000",
+   "addr": "114 Granada Dr, Mountain View",
+   "meta": "3 bd · 2.5 ba · 1,422 sqft",
+   "status": "Co-listing",
+   "desc_en": "Quiet, private, move-in ready end-unit townhome with detached garage and landscaped backyard.",
+   "desc_zh": "安静私密、拎包入住的边户联排，独立车库与园艺后院。",
+   "photo": "https://photos.zillowstatic.com/fp/fdf1a27f42ec55c1f36c4e455b85848a-cc_ft_768.webp",
+   "visible": true
+  },
+  {
+   "id": "l4",
+   "price": "$929,888",
+   "addr": "1949 Mahuron Cir, San Jose",
+   "meta": "3 bd · 3 ba · 1,667 sqft",
+   "status": "For sale",
+   "desc_en": "Onyx community floor plan facing the park, with high ceilings and a modern kitchen.",
+   "desc_zh": "Onyx 社区热门户型，正对公园，挑高天花板与现代厨房。",
+   "photo": "https://photos.zillowstatic.com/fp/044cffc44ffe3075154bc8d948ad85ad-cc_ft_768.webp",
+   "visible": true
+  },
+  {
+   "id": "l5",
+   "price": "$840,000",
+   "addr": "192 William Manly St #6, San Jose",
+   "meta": "2 bd · 2 ba · 1,668 sqft",
+   "status": "Under contract",
+   "desc_en": "Communications Hill home with oversized windows and a large private balcony.",
+   "desc_zh": "Communications Hill 住宅，超大窗户与宽敞私人阳台。",
+   "photo": "",
+   "visible": true
+  }
+ ]
+}
