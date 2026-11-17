@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin · Cindy Yang Site</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../site.css">
+<style>
+body{font-size:15px}
+.login{max-width:420px;margin:12vh auto;border-radius:28px;padding:36px;display:grid;gap:14px}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:28px 0 18px}
+.panel{display:none}.panel.on{display:block}
+.box{border-radius:22px;padding:24px;margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
+label{display:block;font-size:12px;color:var(--mute);margin:12px 0 6px;letter-spacing:.04em}
+.item{display:flex;align-items:center;gap:12px;padding:12px 14px;border-top:1px solid var(--line)}
+.item:first-child{border-top:0}
+.item .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.item img,.item .sw{width:64px;height:44px;border-radius:8px;object-fit:cover;background:rgba(20,38,31,.08);flex:none}
+.ib{border:1px solid var(--line);background:#fff8;border-radius:9px;padding:6px 10px;cursor:pointer;font:500 13px var(--sf)}
+.ib:hover{border-color:var(--gaea)}
+.ib.on{background:var(--deep);color:#f6f1e7}
+.status{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--deep);color:#f6f1e7;padding:12px 20px;border-radius:14px;display:none;z-index:99;max-width:90vw}
+.dirty{color:#b5651d;font-weight:600}
+.warn{border-left:3px solid var(--gaea);padding:10px 14px;background:rgba(217,189,131,.15);border-radius:10px;color:#5b4a26;font-size:14px}
+@media(max-width:760px){.row,.row3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="loginView" class="wrap">
+  <form class="login glass" onsubmit="login(event)">
+    <div class="brand" style="text-align:center">CINDY YANG <i>·</i> ADMIN</div>
+    <p class="note" style="text-align:center">网站后台 · Site admin</p>
+    <input id="pw" type="password" placeholder="Password / 密码" autocomplete="current-password" autofocus>
+    <button class="btn">Log in / 登录</button>
+    <p class="note" id="loginMsg"></p>
+  </form>
+</div>
+
+<div id="app" class="wrap" style="display:none;padding-bottom:80px">
+  <div class="bar">
+    <div><div class="brand">CINDY YANG <i>·</i> ADMIN</div><div class="note" id="dirtyNote"></div></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <a class="btn ghost sm" href="../index.html?preview=1" target="_blank">Preview 预览</a>
+      <button class="btn gold sm" onclick="publish()">Publish to site 发布</button>
+      <button class="btn ghost sm" onclick="logout()">Log out</button>
+    </div>
+  </div>
+  <div class="tabs" id="tabs">
+    <button class="tab on" data-p="blog">Blog 博客</button>
+    <button class="tab" data-p="listings">Listings 在售房源</button>
+    <button class="tab" data-p="portfolio">Portfolio 成交</button>
+    <button class="tab" data-p="modules">Modules 功能模块</button>
+    <button class="tab" data-p="settings">Settings 设置</button>
+  </div>
+
+  <div class="panel on" id="p-blog" style="margin-top:22px">
+    <div class="box glass"><div style="display:flex;justify-content:space-between;align-items:center"><h3>Posts 文章</h3><button class="btn sm" onclick="newPost()">+ New post 新文章</button></div><div id="postList" style="margin-top:12px"></div></div>
+    <div class="box glass" id="postEd" style="display:none"></div>
+  </div>
+
+  <div class="panel" id="p-listings" style="margin-top:22px">
+    <div class="box glass"><div style="display:flex;justify-content:space-between;align-items:center"><h3>Current listings 在售房源 <span class="note">— order here = order on the site 这里的顺序就是网站上的顺序</span></h3><button class="btn sm" onclick="newListing()">+ Add 添加</button></div><div id="listList" style="margin-top:12px"></div></div>
+    <div class="box glass" id="listEd" style="display:none"></div>
+  </div>
+
+  <div class="panel" id="p-portfolio" style="margin-top:22px">
+    <div class="box glass">
+      <h3>Closed sales 成交记录</h3>
+      <p class="note" style="margin:6px 0 12px">Sorted by price, high → low. Pin ★ to move a sale to the top (the first pinned one becomes the big featured card); Hide removes it from the site. 默认按价格从高到低；★ 置顶（第一个置顶会成为大图主推），Hide 隐藏。</p>
+      <input id="pfSearch" placeholder="Search address 搜索地址…" oninput="renderPortfolio()">
+      <div id="pfList" style="margin-top:12px;max-height:70vh;overflow:auto"></div>
+    </div>
+  </div>
+
+  <div class="panel" id="p-modules" style="margin-top:22px">
+    <div class="box glass"><h3>Modules 功能模块</h3><p class="note" style="margin:6px 0 12px">Reserved switches for future development. 预留给后续开发的功能开关。</p><div id="modList"></div></div>
+  </div>
+
+  <div class="panel" id="p-settings" style="margin-top:22px">
+    <div class="box glass">
+      <h3>Site 网站</h3>
+      <div class="row"><div><label>Contact email 联系邮箱</label><input id="sEmail"></div><div><label>Hero photo path 首页主图</label><input id="sHero"></div></div>
+      <button class="btn sm" style="margin-top:14px" onclick="saveSite()">Save 保存</button>
+    </div>
+    <div class="box glass">
+      <h3>Admin password 后台密码</h3>
+      <div class="row"><div><label>New password 新密码</label><input id="np1" type="password"></div><div><label>Repeat 再输一次</label><input id="np2" type="password"></div></div>
+      <button class="btn sm" style="margin-top:14px" onclick="changePw()">Change 修改</button>
+      <p class="note" style="margin-top:10px">Takes effect after Publish. 发布后生效。</p>
+    </div>
+    <div class="box glass">
+      <h3>Publishing 发布连接（GitHub）</h3>
+      <p class="warn" style="margin-top:10px">The site is hosted on GitHub Pages. To publish from here, paste a GitHub <b>fine-grained token</b> with <b>Contents: Read and write</b> access to this one repository. It is stored only in this browser. 网站托管在 GitHub Pages。要从后台直接发布，需要在这里粘贴一个只授权本仓库「Contents 读写」的 GitHub fine-grained token，只保存在当前浏览器。</p>
+      <div class="row3" style="margin-top:6px"><div><label>Repository 仓库 (owner/name)</label><input id="gRepo"></div><div><label>Branch 分支</label><input id="gBranch"></div><div><label>&nbsp;</label><a class="btn ghost sm" style="width:100%" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Create token</a></div></div>
+      <label>Token</label><input id="gToken" type="password" placeholder="github_pat_…">
+      <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap"><button class="btn sm" onclick="saveGh()">Save 保存</button><button class="btn ghost sm" onclick="testGh()">Test connection 测试</button><button class="btn ghost sm" onclick="downloadAll()">Download JSON 下载数据</button><button class="btn ghost sm" onclick="discard()">Discard drafts 放弃未发布修改</button></div>
+    </div>
+  </div>
+</div>
+<div class="status" id="status"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+const NAMES=['settings','blog','listings','sales'];
+let D={}, ORIG={}, curPost=-1, curList=-1;
+function toast(m,ms=2600){const s=$('#status');s.textContent=m;s.style.display='block';clearTimeout(s._t);s._t=setTimeout(()=>s.style.display='none',ms)}
+async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+async function fetchOrig(n){const r=await fetch('../content/'+n+'.json?v='+Date.now());return r.json()}
+async function load(){for(const n of NAMES){ORIG[n]=await fetchOrig(n);let d=null;try{d=JSON.parse(localStorage.getItem('cy-draft-'+n))}catch(e){}D[n]=d||structuredClone(ORIG[n])}}
+function save(n){try{localStorage.setItem('cy-draft-'+n,JSON.stringify(D[n]))}catch(e){}dirty()}
+function changed(){return NAMES.filter(n=>JSON.stringify(D[n])!==JSON.stringify(ORIG[n]))}
+function dirty(){const c=changed();$('#dirtyNote').innerHTML=c.length?`<span class="dirty">Unpublished changes 未发布：${c.join(', ')}</span>`:'All changes published 全部已发布'}
+
+/* ---- login (client-side gate; real write access = GitHub token) ---- */
+async function login(e){e.preventDefault();const s=await fetchOrig('settings');let d=null;try{d=JSON.parse(localStorage.getItem('cy-draft-settings'))}catch(e){}
+  const want=(s.admin||{}).password_sha256;const h=await sha($('#pw').value);
+  if(h===want||(d&&d.admin&&h===d.admin.password_sha256)){sessionStorage.cyAdmin='1';start()}else{$('#loginMsg').textContent='Wrong password 密码错误'}}
+function logout(){sessionStorage.removeItem('cyAdmin');location.reload()}
+async function start(){$('#loginView').style.display='none';$('#app').style.display='block';await load();renderAll();dirty()}
+$$('#tabs .tab').forEach(t=>t.onclick=()=>{$$('#tabs .tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');$$('.panel').forEach(p=>p.classList.remove('on'));$('#p-'+t.dataset.p).classList.add('on')});
+function renderAll(){renderPosts();renderListings();renderPortfolio();renderModules();renderSettings()}
+
+/* ---- blog ---- */
+function renderPosts(){const P=D.blog.posts;$('#postList').innerHTML=P.map((p,i)=>`<div class="item">${p.cover?`<img src="../${esc(p.cover)}">`:'<div class="sw"></div>'}<div class="t"><b>${esc(p.title_zh||p.title_en)}</b><div class="note">${esc(p.date)} · ${p.published===false?'Draft 草稿':'Published 已发布'} · /${esc(p.slug)}</div></div>
+  <button class="ib" onclick="editPost(${i})">Edit 编辑</button><button class="ib" onclick="delPost(${i})">Delete</button></div>`).join('')||'<p class="note">No posts yet.</p>'}
+function newPost(){const d=new Date().toISOString().slice(0,10);D.blog.posts.unshift({slug:'post-'+Date.now().toString(36),date:d,published:false,tags:[],cover:'',title_en:'',title_zh:'',excerpt_en:'',excerpt_zh:'',body_en:'',body_zh:''});save('blog');renderPosts();editPost(0)}
+function delPost(i){if(!confirm('Delete this post? 删除这篇文章？'))return;D.blog.posts.splice(i,1);save('blog');$('#postEd').style.display='none';renderPosts()}
+function editPost(i){curPost=i;const p=D.blog.posts[i];const f=(k,lab,ta,rows)=>`<label>${lab}</label>${ta?`<textarea data-k="${k}" rows="${rows||3}">${esc(p[k])}</textarea>`:`<input data-k="${k}" value="${esc(p[k])}">`}`;
+  $('#postEd').style.display='block';$('#postEd').innerHTML=`<h3>Edit post 编辑文章</h3>
+  <div class="row3">${f('slug','URL slug（英文短链接）')}${f('date','Date 日期 (YYYY-MM-DD)')}<div><label>Status 状态</label><select data-k="published"><option value="true" ${p.published!==false?'selected':''}>Published 发布</option><option value="false" ${p.published===false?'selected':''}>Draft 草稿</option></select></div></div>
+  <div class="row"><div>${f('title_en','Title (English)')}</div><div>${f('title_zh','标题（中文）')}</div></div>
+  <div class="row"><div>${f('excerpt_en','Summary (English) — shows in Google',true,2)}</div><div>${f('excerpt_zh','摘要（中文）',true,2)}</div></div>
+  <div class="row"><div>${f('cover','Cover image path 封面图')}</div><div><label>Upload image 上传图片 (needs GitHub token)</label><input type="file" accept="image/*" onchange="upload(this)"></div></div>
+  ${f('tags','Tags 标签 (comma separated)')}
+  <p class="note" style="margin-top:12px">Body format: blank line = new paragraph · <b>## </b>Heading · <b>![caption](img/file.jpg)</b> image · <b>**bold**</b> · [text](https://link). 正文格式：空行分段，## 小标题，![说明](图片路径) 插图。</p>
+  <div class="row"><div>${f('body_en','Body (English)',true,18)}</div><div>${f('body_zh','正文（中文）',true,18)}</div></div>
+  <div style="display:flex;gap:8px;margin-top:14px"><button class="btn sm" onclick="savePost()">Save draft 保存</button><a class="btn ghost sm" target="_blank" href="../blog.html?preview=1&p=${encodeURIComponent(p.slug)}" onclick="savePost()">Preview 预览</a></div>`;
+  $('#postEd').scrollIntoView({behavior:'smooth'})}
+function savePost(){const p=D.blog.posts[curPost];$$('#postEd [data-k]').forEach(el=>{let v=el.value;if(el.dataset.k==='published')v=v==='true';if(el.dataset.k==='tags')v=typeof v==='string'?v.split(',').map(x=>x.trim()).filter(Boolean):v;p[el.dataset.k]=v});
+  p.slug=String(p.slug).toLowerCase().replace(/[^a-z0-9-]+/g,'-').replace(/^-|-$/g,'')||('post-'+Date.now().toString(36));save('blog');renderPosts();toast('Saved as draft — click Publish to put it live. 已保存草稿，点击「发布」上线。')}
+
+/* ---- listings ---- */
+function renderListings(){const L=D.listings.listings;$('#listList').innerHTML=L.map((h,i)=>`<div class="item">${h.photo?`<img src="${/^https?:/.test(h.photo)?'':'../'}${esc(h.photo)}">`:'<div class="sw"></div>'}<div class="t"><b>${esc(h.price)}</b> · ${esc(h.addr)}<div class="note">${esc(h.status||'')} ${h.visible===false?'· hidden 已隐藏':''}</div></div>
+  <button class="ib" onclick="mv('listings',${i},-1)">↑</button><button class="ib" onclick="mv('listings',${i},1)">↓</button>
+  <button class="ib ${h.visible===false?'':'on'}" onclick="D.listings.listings[${i}].visible=${h.visible===false};save('listings');renderListings()">${h.visible===false?'Show':'Visible'}</button>
+  <button class="ib" onclick="editListing(${i})">Edit</button><button class="ib" onclick="if(confirm('Remove? 删除？')){D.listings.listings.splice(${i},1);save('listings');renderListings()}">✕</button></div>`).join('')}
+function mv(n,i,d){const a=D[n].listings,j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];save(n);renderListings()}
+function newListing(){D.listings.listings.unshift({id:'l'+Date.now().toString(36),price:'',addr:'',meta:'',status:'For sale',desc_en:'',desc_zh:'',photo:'',visible:true});save('listings');renderListings();editListing(0)}
+function editListing(i){curList=i;const h=D.listings.listings[i];const f=(k,lab,ta)=>`<label>${lab}</label>${ta?`<textarea data-k="${k}" rows="3">${esc(h[k])}</textarea>`:`<input data-k="${k}" value="${esc(h[k])}">`}`;
+  $('#listEd').style.display='block';$('#listEd').innerHTML=`<h3>Edit listing 编辑房源</h3><div class="row3">${f('addr','Address 地址')}${f('price','Price 价格')}${f('status','Status 状态 (For sale / Pending / Sold)')}</div>
+  ${f('meta','Beds · baths · sqft 房型面积')}<div class="row"><div>${f('photo','Photo URL 照片链接')}</div><div><label>Upload photo 上传照片</label><input type="file" accept="image/*" onchange="upload(this,'photo')"></div></div>
+  <div class="row"><div>${f('desc_en','Description (English)',true)}</div><div>${f('desc_zh','描述（中文）',true)}</div></div>
+  <button class="btn sm" style="margin-top:14px" onclick="saveListing()">Save 保存</button>`;$('#listEd').scrollIntoView({behavior:'smooth'})}
+function saveListing(){const h=D.listings.listings[curList];$$('#listEd [data-k]').forEach(el=>h[el.dataset.k]=el.value);save('listings');renderListings();toast('Saved 已保存')}
+
+/* ---- portfolio ---- */
+function renderPortfolio(){const S=D.sales,q=($('#pfSearch').value||'').toLowerCase(),pin=S.pinned||[],hid=S.hidden||[];
+  const rows=[...S.sales].sort((a,b)=>{const pa=pin.indexOf(a.id),pb=pin.indexOf(b.id);if(pa>=0||pb>=0)return (pa<0?1e9:pa)-(pb<0?1e9:pb);return b.price-a.price}).filter(s=>!q||s.addr.toLowerCase().includes(q));
+  $('#pfList').innerHTML=rows.map(s=>`<div class="item">${s.photo?`<img loading="lazy" src="${esc(s.photo)}">`:'<div class="sw"></div>'}<div class="t"><b>$${s.price.toLocaleString()}</b> · ${esc(s.addr)}<div class="note">${esc(s.date)} · ${esc(s.side)} ${hid.includes(s.id)?'· <b>hidden</b>':''}</div></div>
+   <button class="ib ${pin.includes(s.id)?'on':''}" onclick="togglePin('${s.id}')">★</button>${pin.includes(s.id)?`<button class="ib" onclick="pinMv('${s.id}',-1)">↑</button><button class="ib" onclick="pinMv('${s.id}',1)">↓</button>`:''}
+   <button class="ib ${hid.includes(s.id)?'on':''}" onclick="toggleHide('${s.id}')">${hid.includes(s.id)?'Hidden':'Hide'}</button></div>`).join('')}
+function togglePin(id){const p=D.sales.pinned=D.sales.pinned||[];const i=p.indexOf(id);i<0?p.push(id):p.splice(i,1);save('sales');renderPortfolio()}
+function pinMv(id,d){const p=D.sales.pinned,i=p.indexOf(id),j=i+d;if(j<0||j>=p.length)return;[p[i],p[j]]=[p[j],p[i]];save('sales');renderPortfolio()}
+function toggleHide(id){const h=D.sales.hidden=D.sales.hidden||[];const i=h.indexOf(id);i<0?h.push(id):h.splice(i,1);save('sales');renderPortfolio()}
+
+/* ---- modules (reserved) ---- */
+function renderModules(){const F=D.settings.features||{};$('#modList').innerHTML=Object.entries(F).map(([k,v])=>`<div class="item" style="align-items:flex-start"><div class="t" style="white-space:normal"><b>${esc(k)}</b><div class="note">${esc(v.note||'')}</div>
+  ${Object.keys(v).filter(x=>!['enabled','note'].includes(x)).map(x=>`<label>${esc(x)}</label><input value="${esc(v[x])}" onchange="D.settings.features['${k}']['${x}']=this.value;save('settings')">`).join('')}</div>
+  <button class="ib ${v.enabled?'on':''}" onclick="D.settings.features['${k}'].enabled=!D.settings.features['${k}'].enabled;save('settings');renderModules()">${v.enabled?'On 开':'Off 关'}</button></div>`).join('')}
+
+/* ---- settings ---- */
+function gh(){try{return JSON.parse(localStorage.getItem('cy-gh')||'{}')}catch(e){return{}}}
+function renderSettings(){const s=D.settings,g=gh();$('#sEmail').value=s.contact_email||'';$('#sHero').value=s.hero_photo||'';
+  $('#gRepo').value=g.repo||`${s.github?.owner}/${s.github?.repo}`;$('#gBranch').value=g.branch||s.github?.branch||'main';$('#gToken').value=g.token||''}
+function saveSite(){D.settings.contact_email=$('#sEmail').value.trim();D.settings.hero_photo=$('#sHero').value.trim();save('settings');toast('Saved 已保存')}
+async function changePw(){const a=$('#np1').value,b=$('#np2').value;if(a.length<4)return toast('At least 4 characters 至少 4 位');if(a!==b)return toast('Passwords differ 两次不一致');
+  D.settings.admin.password_sha256=await sha(a);save('settings');$('#np1').value=$('#np2').value='';toast('New password saved — Publish to apply. 新密码已保存，发布后生效。',4000)}
+function saveGh(){localStorage.setItem('cy-gh',JSON.stringify({repo:$('#gRepo').value.trim(),branch:$('#gBranch').value.trim()||'main',token:$('#gToken').value.trim()}));toast('Saved in this browser 已保存到本浏览器')}
+async function api(path,opt={}){const g=gh();if(!g.token)throw new Error('No GitHub token — add it in Settings. 请先在「设置」里填写 GitHub token。');
+  const r=await fetch(`https://api.github.com/repos/${g.repo}/${path}`,{...opt,headers:{Authorization:'Bearer '+g.token,Accept:'application/vnd.github+json',...(opt.headers||{})}});
+  if(!r.ok&&r.status!==404)throw new Error(`GitHub ${r.status}: ${(await r.json().catch(()=>({}))).message||''}`);return r.status===404?null:r.json()}
+async function testGh(){saveGh();try{const r=await api('');toast(r?`Connected to ${r.full_name} ✓ 连接成功`:'Repository not found 找不到仓库',4000)}catch(e){toast(e.message,5000)}}
+const b64=s=>{const u=typeof s==='string'?new TextEncoder().encode(s):s;let x='';for(let i=0;i<u.length;i+=0x8000)x+=String.fromCharCode(...u.subarray(i,i+0x8000));return btoa(x)};
+async function putFile(path,content,msg){const g=gh();const cur=await api(`contents/${path}?ref=${g.branch}`);
+  return api(`contents/${path}`,{method:'PUT',body:JSON.stringify({message:msg,content:b64(content),branch:g.branch,...(cur?{sha:cur.sha}:{})})})}
+async function publish(){const c=changed();if(!c.length)return toast('Nothing to publish 没有需要发布的修改');
+  try{for(const n of c){toast('Publishing '+n+'… 发布中',60000);D[n].updated=new Date().toISOString().slice(0,10);await putFile(`content/${n}.json`,JSON.stringify(D[n],null,1),`Admin: update ${n}`);ORIG[n]=structuredClone(D[n]);localStorage.removeItem('cy-draft-'+n)}
+    dirty();toast('Published ✓ The live site updates in about 1 minute. 已发布，约 1 分钟后网站更新。',6000)}catch(e){toast(e.message,6000)}}
+async function upload(input,field){const f=input.files[0];if(!f)return;try{const name=`img/uploads/${Date.now().toString(36)}-${f.name.toLowerCase().replace(/[^a-z0-9.]+/g,'-')}`;toast('Uploading… 上传中',60000);
+  await putFile(name,new Uint8Array(await f.arrayBuffer()),'Admin: upload image');
+  if(field){$('#listEd [data-k=photo]').value=name}else{const cv=$('#postEd [data-k=cover]');if(!cv.value)cv.value=name;navigator.clipboard?.writeText(`![](${name})`).catch(()=>{})}
+  toast(`Uploaded ✓ ${name}${field?'':' — copied as ![](…) for the body 已复制插图代码'}`,5000)}catch(e){toast(e.message,6000)}}
+function downloadAll(){for(const n of NAMES){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(D[n],null,1)],{type:'application/json'}));a.download=n+'.json';a.click()}}
+function discard(){if(!confirm('Discard all unpublished changes? 放弃所有未发布的修改？'))return;NAMES.forEach(n=>localStorage.removeItem('cy-draft-'+n));location.reload()}
+if(sessionStorage.cyAdmin==='1')start();
+</script>
+</body>
+</html>
