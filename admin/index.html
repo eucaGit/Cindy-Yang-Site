@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>Admin · Cindy Yang Site</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Belleza&family=Cinzel:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../site.css">
 <style>
 body{font-size:15px}
@@ -32,7 +32,7 @@ label{display:block;font-size:12px;color:var(--mute);margin:12px 0 6px;letter-sp
 <body>
 <div id="loginView" class="wrap">
   <form class="login glass" onsubmit="login(event)">
-    <div class="brand" style="text-align:center">CINDY YANG <i>·</i> ADMIN</div>
+    <img src="../img/gaea-logo.png" alt="Gaea Realty" style="height:96px;width:auto;margin:0 auto;display:block">
     <p class="note" style="text-align:center">网站后台 · Site admin</p>
     <input id="pw" type="password" placeholder="Password / 密码" autocomplete="current-password" autofocus>
     <button class="btn">Log in / 登录</button>
@@ -42,7 +42,7 @@ label{display:block;font-size:12px;color:var(--mute);margin:12px 0 6px;letter-sp
 
 <div id="app" class="wrap" style="display:none;padding-bottom:80px">
   <div class="bar">
-    <div><div class="brand">CINDY YANG <i>·</i> ADMIN</div><div class="note" id="dirtyNote"></div></div>
+    <div><div class="brand"><img src="../img/gaea-mark.png" alt=""><b>CINDY YANG · ADMIN</b></div><div class="note" id="dirtyNote"></div></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <a class="btn ghost sm" href="../index.html?preview=1" target="_blank">Preview 预览</a>
       <button class="btn gold sm" onclick="publish()">Publish to site 发布</button>
@@ -53,6 +53,7 @@ label{display:block;font-size:12px;color:var(--mute);margin:12px 0 6px;letter-sp
     <button class="tab on" data-p="blog">Blog 博客</button>
     <button class="tab" data-p="listings">Listings 在售房源</button>
     <button class="tab" data-p="portfolio">Portfolio 成交</button>
+    <button class="tab" data-p="videos">Videos 视频</button>
     <button class="tab" data-p="modules">Modules 功能模块</button>
     <button class="tab" data-p="settings">Settings 设置</button>
   </div>
@@ -74,6 +75,15 @@ label{display:block;font-size:12px;color:var(--mute);margin:12px 0 6px;letter-sp
       <input id="pfSearch" placeholder="Search address 搜索地址…" oninput="renderPortfolio()">
       <div id="pfList" style="margin-top:12px;max-height:70vh;overflow:auto"></div>
     </div>
+  </div>
+
+  <div class="panel" id="p-videos" style="margin-top:22px">
+    <div class="box glass">
+      <h3>Videos 视频 <span class="note">— shown 3 per row under the sold homes; order here = order on the site 每排 3 个，这里的顺序就是网站上的顺序</span></h3>
+      <div class="row3" style="margin-top:10px"><div><label>YouTube link YouTube 链接</label><input id="vUrl" placeholder="https://www.youtube.com/watch?v=… or https://youtu.be/…"></div><div><label>Title 标题</label><input id="vTitle" placeholder="e.g. 123 Main St, Sunnyvale"></div><div><label>&nbsp;</label><button class="btn sm" style="width:100%" onclick="addVideo()">+ Add video 添加</button></div></div>
+      <div id="vidList" style="margin-top:14px"></div>
+    </div>
+    <div class="box glass" id="vidEd" style="display:none"></div>
   </div>
 
   <div class="panel" id="p-modules" style="margin-top:22px">
@@ -106,7 +116,7 @@ label{display:block;font-size:12px;color:var(--mute);margin:12px 0 6px;letter-sp
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
-const NAMES=['settings','blog','listings','sales'];
+const NAMES=['settings','blog','listings','sales','videos'];
 let D={}, ORIG={}, curPost=-1, curList=-1;
 function toast(m,ms=2600){const s=$('#status');s.textContent=m;s.style.display='block';clearTimeout(s._t);s._t=setTimeout(()=>s.style.display='none',ms)}
 async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
@@ -123,7 +133,24 @@ async function login(e){e.preventDefault();const s=await fetchOrig('settings');l
 function logout(){sessionStorage.removeItem('cyAdmin');location.reload()}
 async function start(){$('#loginView').style.display='none';$('#app').style.display='block';await load();renderAll();dirty()}
 $$('#tabs .tab').forEach(t=>t.onclick=()=>{$$('#tabs .tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');$$('.panel').forEach(p=>p.classList.remove('on'));$('#p-'+t.dataset.p).classList.add('on')});
-function renderAll(){renderPosts();renderListings();renderPortfolio();renderModules();renderSettings()}
+function renderAll(){renderPosts();renderListings();renderPortfolio();renderVideos();renderModules();renderSettings()}
+
+/* ---- videos ---- */
+const ytId=u=>{u=String(u||'').trim();const m=u.match(/(?:v=|youtu\.be\/|shorts\/|embed\/|live\/)([\w-]{11})/);return m?m[1]:(/^[\w-]{11}$/.test(u)?u:'')};
+function renderVideos(){const V=D.videos.videos;$('#vidList').innerHTML=V.map((v,i)=>`<div class="item"><img src="https://i.ytimg.com/vi/${esc(v.youtube)}/mqdefault.jpg"><div class="t"><b>${esc(v.title_en)}</b><div class="note">${esc(v.sub_en||'')} · youtu.be/${esc(v.youtube)} ${v.visible===false?'· hidden 已隐藏':''}</div></div>
+  <button class="ib" onclick="vmv(${i},-1)">↑</button><button class="ib" onclick="vmv(${i},1)">↓</button>
+  <button class="ib ${v.visible===false?'':'on'}" onclick="D.videos.videos[${i}].visible=${v.visible===false};save('videos');renderVideos()">${v.visible===false?'Show':'Visible'}</button>
+  <button class="ib" onclick="editVideo(${i})">Edit</button><button class="ib" onclick="if(confirm('Remove? 删除？')){D.videos.videos.splice(${i},1);save('videos');renderVideos()}">✕</button></div>`).join('')||'<p class="note">No videos yet.</p>'}
+function vmv(i,d){const a=D.videos.videos,j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];save('videos');renderVideos()}
+function addVideo(){const id=ytId($('#vUrl').value);if(!id)return toast('Not a YouTube link 不是有效的 YouTube 链接');const t=$('#vTitle').value.trim()||'Home tour';
+  D.videos.videos.unshift({id:'v'+Date.now().toString(36),youtube:id,title_en:t,title_zh:t,sub_en:'',sub_zh:'',visible:true});save('videos');$('#vUrl').value=$('#vTitle').value='';renderVideos();toast('Added — Publish to put it live. 已添加，发布后上线。')}
+let curVid=-1;
+function editVideo(i){curVid=i;const v=D.videos.videos[i];const f=(k,lab)=>`<label>${lab}</label><input data-k="${k}" value="${esc(v[k])}">`;
+  $('#vidEd').style.display='block';$('#vidEd').innerHTML=`<h3>Edit video 编辑视频</h3>${f('youtube','YouTube link or ID 链接或 ID')}
+  <div class="row"><div>${f('title_en','Title (English)')}</div><div>${f('title_zh','标题（中文）')}</div></div>
+  <div class="row"><div>${f('sub_en','Subtitle (English)')}</div><div>${f('sub_zh','副标题（中文）')}</div></div>
+  <button class="btn sm" style="margin-top:14px" onclick="saveVideo()">Save 保存</button>`;$('#vidEd').scrollIntoView({behavior:'smooth'})}
+function saveVideo(){const v=D.videos.videos[curVid];$$('#vidEd [data-k]').forEach(el=>v[el.dataset.k]=el.value.trim());const id=ytId(v.youtube);if(!id)return toast('Not a YouTube link 不是有效的 YouTube 链接');v.youtube=id;save('videos');renderVideos();toast('Saved 已保存')}
 
 /* ---- blog ---- */
 function renderPosts(){const P=D.blog.posts;$('#postList').innerHTML=P.map((p,i)=>`<div class="item">${p.cover?`<img src="../${esc(p.cover)}">`:'<div class="sw"></div>'}<div class="t"><b>${esc(p.title_zh||p.title_en)}</b><div class="note">${esc(p.date)} · ${p.published===false?'Draft 草稿':'Published 已发布'} · /${esc(p.slug)}</div></div>
