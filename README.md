@@ -7,9 +7,11 @@ Static site on GitHub Pages. No build step.
 ## Files
 | Path | What it is |
 |---|---|
-| `index.html` | Home: "What's my home worth?" chat → track record + $11.56M feature + all closed sales (price high→low) → listings → testimony → bio (中/EN verbatim) → growth story → roles → Gaea |
+| `index.html` | Home: "What's my home worth?" chat → track record + $11.56M feature + all closed sales (price high→low) → videos (3 per row) → listings → testimony → bio (中/EN verbatim) → growth story → roles → Gaea |
+| `content/videos.json` | YouTube videos for the video section (edit in Admin → Videos) |
+| `img/gaea-*.png` | Gaea logo + emblem; `-light` versions for dark backgrounds |
 | `blog.html` | Blog list and posts (`blog.html?p=slug`) |
-| `admin/` | Login portal + editor (blog, listing order, portfolio pin/hide, modules, settings) |
+| `admin/` | Login portal + editor (blog, listing order, portfolio pin/hide, videos, modules, settings) |
 | `content/settings.json` | Contact email, hero photo, admin password hash, **reserved feature switches** |
 | `content/blog.json` | Blog posts (EN + 中文, light Markdown) |
 | `content/listings.json` | Current listings, in display order |
@@ -27,7 +29,7 @@ Static site on GitHub Pages. No build step.
 `valuation_chat.ai_endpoint` (live AI replies), `lead_webhook` (CRM / Google Sheet), `mls_idx_feed` (needs an IDX vendor agreement), `open_houses`, `newsletter`, `market_reports`, `video`.
 
 ## To do
-- Hero photo: save the San Francisco portrait as `img/cindy-hero.jpg` (falls back to `cindy.png` until then).
+- Display font: Romanica (K-Type) is free for personal use only. Buy the commercial licence at https://www.k-type.com/fonts/romanica/, add `fonts/romanica.woff2`, and every headline switches to it automatically. Belleza (Google Fonts) stands in until then.
 - Replace the three "Sample" stock photos in *Talk to me as…* with Cindy's own.
 - Custom domain `cindy.gaearealty.com` (CNAME `cindy` → `eucagit.github.io`, then set it in repo Settings → Pages).
 - House photos are hotlinked from Zillow / Homes.com; self-host before launch.

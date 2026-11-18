@@ -6,16 +6,17 @@
 <title>Cindy Yang · Gaea Realty</title>
 <meta name="description" content="Cindy Yang — Silicon Valley real estate investor, founder and women-empowerment advocate at Gaea Realty. 169 homes closed, $304M+ in volume. What's your home worth? Just ask.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Belleza&family=Cinzel:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
 
 <nav><div class="wrap">
-  <a class="brand" href="#top">CINDY YANG <i>·</i> GAEA</a>
+  <a class="brand" href="#top"><img src="img/gaea-mark.png" alt="Gaea Realty"><b>CINDY YANG</b></a>
   <div class="links">
     <a href="#top"><span data-l="en">Home Value</span><span data-l="zh">房屋估值</span></a>
     <a href="#record"><span data-l="en">Track Record</span><span data-l="zh">成交战绩</span></a>
+    <a href="#videos"><span data-l="en">Video</span><span data-l="zh">视频</span></a>
     <a href="#listings"><span data-l="en">Listings</span><span data-l="zh">在售房源</span></a>
     <a href="#testimony"><span data-l="en">Testimony</span><span data-l="zh">客户评价</span></a>
     <a href="#about"><span data-l="en">About</span><span data-l="zh">关于 Cindy</span></a>
@@ -41,7 +42,7 @@
       <div class="chips" id="chips"></div>
     </div>
   </div>
-  <div class="photo reveal"><img id="heroImg" src="img/cindy-hero.jpg" alt="Cindy Yang" onerror="this.onerror=null;this.src='cindy.png'"><span>CINDY YANG · GAEA</span></div>
+  <div class="photo reveal"><img id="heroImg" src="img/cindy-hero.jpg" alt="Cindy Yang" onerror="this.onerror=null;this.src='cindy.png'"><span class="ph-logo"><img src="img/gaea-mark-light.png" alt=""><b>CINDY YANG · GAEA REALTY</b></span></div>
 </div></header>
 
 <!-- 02 · TRACK RECORD + PORTFOLIO -->
@@ -58,7 +59,7 @@
     <div class="pill glass"><b>$1.8M</b><span data-l="en">average price · range $665K – $11.6M</span><span data-l="zh">平均成交价 · 区间 $665K – $11.6M</span></div>
   </div>
 
-  <div class="feature glass reveal" id="feature"></div>
+  <div class="feature reveal" id="feature"></div>
 
   <div style="margin-top:84px">
     <div class="eyebrow"><b>02</b> &nbsp;Track Record</div>
@@ -78,16 +79,25 @@
   <p class="note" style="margin-top:16px"><span data-l="en">Closed sales from Cindy’s public Zillow and Homes.com profiles (MLS-sourced public record), sorted by price. Sale dates older than a few months are shown to the month or year as published. Totals above are from Homes.com.</span><span data-l="zh">成交记录来自 Cindy 的 Zillow 与 Homes.com 公开主页（源自 MLS 的公开成交记录），按成交价从高到低排列。较早的成交日期按来源页面精确到月或年。上方总计数据来自 Homes.com。</span></p>
 </div></section>
 
-<!-- 03 · CURRENT LISTINGS -->
+<!-- 03 · VIDEOS (edit in /admin → Videos) -->
+<section id="videos" class="dark"><div class="wrap">
+  <div class="eyebrow"><b>03</b> &nbsp;<span data-l="en">Home Tours · Video</span><span data-l="zh">房屋视频</span></div>
+  <h2 style="margin-top:16px"><span data-l="en">See how we present a home.</span><span data-l="zh">看看我们如何呈现一个家。</span></h2>
+  <p class="lead" style="margin-top:18px"><span data-l="en">Every listing gets a cinematic tour. This is how your home will meet its buyers.</span><span data-l="zh">每一套房源都有电影级的视频导览 —— 你的房子，也会这样被买家看见。</span></p>
+  <div class="vids" id="vids"></div>
+  <a class="btn ghost" style="margin-top:28px" href="https://www.youtube.com/@gaearealty" target="_blank" rel="noopener"><span data-l="en">More on YouTube</span><span data-l="zh">在 YouTube 查看更多</span></a>
+</div></section>
+
+<!-- 04 · CURRENT LISTINGS -->
 <section id="listings"><div class="wrap">
-  <div class="eyebrow"><b>03</b> &nbsp;Listings</div>
+  <div class="eyebrow"><b>04</b> &nbsp;Listings</div>
   <h2 style="margin-top:16px"><span data-l="en">On the market now.</span><span data-l="zh">正在出售。</span></h2>
   <div class="grid" id="homes"></div>
 </div></section>
 
 <!-- 04 · TESTIMONY -->
-<section id="testimony"><div class="wrap">
-  <div class="eyebrow"><b>04</b> &nbsp;Testimony</div>
+<section id="testimony" class="dark"><div class="wrap">
+  <div class="eyebrow"><b>05</b> &nbsp;Testimony</div>
   <h2 style="margin-top:16px"><span data-l="en">5.0 stars.<br>In their words.</span><span data-l="zh">5.0 星。<br>来自客户的原话。</span></h2>
   <p class="lead" style="margin-top:18px"><span data-l="en">52 five-star reviews — 36 on Zillow, 16 on Google.</span><span data-l="zh">52 条五星评价 —— Zillow 36 条，Google 16 条。</span></p>
   <div class="tabs" id="rvf" style="margin-top:28px">
@@ -101,7 +111,7 @@
 
 <!-- 05 · ABOUT (verbatim bio, CN + EN) -->
 <section id="about"><div class="wrap">
-  <div class="eyebrow"><b>05</b> &nbsp;<span data-l="en">About Cindy</span><span data-l="zh">关于 Cindy</span></div>
+  <div class="eyebrow"><b>06</b> &nbsp;<span data-l="en">About Cindy</span><span data-l="zh">关于 Cindy</span></div>
   <p style="margin-top:18px;font-size:20px;font-weight:500"><span data-l="en">Cindy Yang | Real Estate Investor · Company Founder · Champion of Women’s Empowerment</span><span data-l="zh">Cindy Yang｜地产投资人 · 企业创始人 · 女性赋能践行者</span></p>
   <h2 style="margin-top:14px"><span data-l="en">Build a career with expertise.<br>Expand boundaries with action.</span><span data-l="zh">以专业建立事业，<br>以行动拓展边界。</span></h2>
   <p class="lead" style="margin-top:22px;max-width:900px"><span data-l="en">From the Texas A&amp;M military academy to Silicon Valley real estate, from hands-on investing to restaurant entrepreneurship, Cindy has turned 16 years of studying, living and investing in the United States into judgment, execution, and the ability to create opportunity.</span><span data-l="zh">从 Texas A&amp;M 军校到硅谷地产，从投资实战到餐饮创业，Cindy 将16年在美求学，生活与投资经历，转化为判断力，执行力与创造机会的能力。</span></p>
@@ -124,7 +134,7 @@
 
 <!-- 06 · GROWTH STORY → blog -->
 <section id="story"><div class="wrap">
-  <div class="eyebrow"><b>06</b> &nbsp;<span data-l="en">My Growth Journey</span><span data-l="zh">成长历程</span></div>
+  <div class="eyebrow"><b>07</b> &nbsp;<span data-l="en">My Growth Journey</span><span data-l="zh">成长历程</span></div>
   <h2 style="margin-top:16px"><span data-l="en">From cadet to founder.</span><span data-l="zh">从军校学员，到创业者。</span></h2>
   <div class="story">
     <a href="blog.html?p=from-cadet-to-founder" class="reveal"><img src="img/growth-journey.webp" alt="Cindy Yang — My Growth Journey, from cadet to graduate" loading="lazy"></a>
@@ -142,7 +152,7 @@
 
 <!-- 07 · TALK TO ME AS… -->
 <section id="roles"><div class="wrap">
-  <div class="eyebrow"><b>07</b> &nbsp;<span data-l="en">Who I am</span><span data-l="zh">我是谁</span></div>
+  <div class="eyebrow"><b>08</b> &nbsp;<span data-l="en">Who I am</span><span data-l="zh">我是谁</span></div>
   <h2 style="margin-top:16px"><span data-l="en">Talk to me — as…</span><span data-l="zh">请与我交流 —— 以这些身份：</span></h2>
   <div class="tabs" style="margin-top:30px">
     <button class="tab on" data-t="adv"><span data-l="en">an Advocate</span><span data-l="zh">倡导者</span></button>
@@ -167,15 +177,18 @@
 </div></section>
 
 <!-- 08 · GAEA -->
-<section id="gaea"><div class="wrap">
-  <div class="eyebrow"><b>08</b> &nbsp;Gaea Realty</div>
-  <h2 style="margin-top:16px"><span data-l="en">Gaea — the ground<br>everything grows from.</span><span data-l="zh">Gaea —— 万物生长的大地。</span></h2>
-  <p class="lead" style="margin-top:20px"><span data-l="en">Gaea Realty (家易地产) is a Silicon Valley brokerage built on integrity, action and long-term relationships. Cindy is a co-founder.</span><span data-l="zh">Gaea 家易地产是一家立足硅谷、以诚信、行动与长期关系为本的经纪公司。Cindy 为联合创始人之一。</span></p>
-  <a class="btn" style="margin-top:26px" href="https://www.gaearealty.com" target="_blank" rel="noopener">gaearealty.com</a>
+<section id="gaea" class="veil dark" style="background-image:url('https://images.homes.com/listings/116/4216591082-857101821/37-de-bell-dr-atherton-ca-primaryphoto.jpg')"><div class="wrap gaea-band">
+  <img class="logo-lg" src="img/gaea-logo-light.png" alt="Gaea Realty 家易地产">
+  <div>
+    <div class="eyebrow"><b>09</b> &nbsp;Gaea Realty</div>
+    <h2 style="margin-top:16px"><span data-l="en">Gaea — the ground<br>everything grows from.</span><span data-l="zh">Gaea —— 万物生长的大地。</span></h2>
+    <p class="lead" style="margin-top:20px"><span data-l="en">Gaea Realty (家易地产) is a Silicon Valley brokerage built on integrity, action and long-term relationships. Cindy is a co-founder.</span><span data-l="zh">Gaea 家易地产是一家立足硅谷、以诚信、行动与长期关系为本的经纪公司。Cindy 为联合创始人之一。</span></p>
+    <a class="btn ghost" style="margin-top:26px" href="https://www.gaearealty.com" target="_blank" rel="noopener">gaearealty.com</a>
+  </div>
 </div></section>
 
 <footer><div class="wrap">
-  <div class="brand">CINDY YANG <i>·</i> GAEA REALTY</div>
+  <a href="https://www.gaearealty.com" target="_blank" rel="noopener"><img src="img/gaea-logo-light.png" alt="Gaea Realty"></a>
   <div><a href="blog.html">Blog</a> &nbsp;·&nbsp; <a href="mailto:cindy@gaearealty.com">cindy@gaearealty.com</a> &nbsp;·&nbsp; <a href="admin/">Admin</a></div>
   <div class="note">© 2026 Gaea Realty. Cindy Yang, licensed Realtor.</div>
 </div></footer>
@@ -246,7 +259,8 @@ const side=s=>({seller:L('Listing side','卖方代理'),buyer:L('Buyer side','�
 const spec=s=>[s.bd&&`${s.bd} ${L('bd','房')}`,s.ba&&`${s.ba} ${L('ba','卫')}`,s.sqft&&`${s.sqft} ${L('sqft','尺')}`].filter(Boolean).join(' · ');
 function ordered(){const pin=SALES._pinned||[];return [...SALES.filter(s=>pin.includes(s.id)).sort((a,b)=>pin.indexOf(a.id)-pin.indexOf(b.id)),...SALES.filter(s=>!pin.includes(s.id))]}
 function feature(){const s=ordered()[0];if(!s)return;
-  $('#feature').innerHTML=`<div class="im" style="background-image:url('${esc(s.photo)}')"></div><div class="tx">
+  $('#feature').style.backgroundImage=`url('${s.photo}')`;
+  $('#feature').innerHTML=`<div class="tx">
    <span class="badge">${L('LARGEST SALE','单笔最高成交')}</span><div class="p">${money(s.price)}</div><div class="a">${esc(s.addr)}</div>
    <div class="meta">${spec(s)}</div><div class="meta">${L('Sold','成交于')} ${when(s.date)} · ${side(s.side)}</div>
    <div style="margin-top:14px"><a class="btn" href="#top" onclick="seed('I’d like to talk about selling my home.','我想聊聊卖房。')">${L('Get your home’s value','获取你的房屋估值')}</a></div></div>`}
@@ -277,6 +291,13 @@ function rv(){const R=(window.CY_REVIEWS||[]).filter(r=>rvK==='all'||r.k===rvK||
 $$('#rvf .tab').forEach(t=>t.onclick=()=>{$$('#rvf .tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');rvK=t.dataset.k;rv()});
 $$('.tab[data-t]').forEach(t=>t.onclick=()=>{$$('.tab[data-t],.pane').forEach(x=>x.classList.remove('on'));t.classList.add('on');$('#'+t.dataset.t).classList.add('on')});
 
+/* ---------- videos (edit in /admin → Videos) ---------- */
+let VIDS=[];
+function videos(){const V=VIDS.filter(v=>v.visible!==false&&v.youtube);$('#videos').style.display=V.length&&SET.features?.video?.enabled!==false?'':'none';
+  $('#vids').innerHTML=V.map(v=>`<div class="vid glass"><div class="fr" data-y="${esc(v.youtube)}" style="background-image:url('https://i.ytimg.com/vi/${esc(v.youtube)}/hqdefault.jpg')"><i></i></div>
+   <div class="cap">${esc(L(v.title_en,v.title_zh||v.title_en))}<span>${esc(L(v.sub_en||'',v.sub_zh||v.sub_en||''))}</span></div></div>`).join('');
+  $$('#vids .fr').forEach(f=>f.onclick=()=>{f.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${f.dataset.y}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Home tour video"></iframe>`;f.onclick=null})}
+
 /* ---------- latest posts ---------- */
 function latest(){const P=POSTS.filter(p=>p.published!==false&&p.slug!=='from-cadet-to-founder').slice(0,3);
   $('#latest').innerHTML=P.map(p=>`<a class="post-card glass" href="blog.html?p=${encodeURIComponent(p.slug)}">${p.cover?`<div class="cv" style="background-image:url('${esc(p.cover)}')"></div>`:''}<div class="in"><div class="note">${esc(p.date)}</div><h3>${esc(L(p.title_en,p.title_zh||p.title_en))}</h3><p>${esc(L(p.excerpt_en,p.excerpt_zh||p.excerpt_en))}</p></div></a>`).join('')}
@@ -285,11 +306,12 @@ function latest(){const P=POSTS.filter(p=>p.published!==false&&p.slug!=='from-ca
 const STOCK={advocate:'1522071820081-009f0129c71c',entrepreneur:'1517248135467-4c7edcad34c4',mother:'1511895426328-dc8714191300'};
 $$('.slot').forEach(e=>{const id=STOCK[e.dataset.photo];if(id)e.style.backgroundImage=`url(https://images.unsplash.com/photo-${id}?w=1100&q=75&auto=format&fit=crop)`});
 
-function renderAll(){greetIfFresh();feature();portfolio();listings();rv();latest()}
+function renderAll(){greetIfFresh();feature();portfolio();videos();listings();rv();latest()}
 function greetIfFresh(){if(chat.log.length<=1)greet()}
 CY.langHooks.push(()=>renderAll());
 initLang();reveal();
-Promise.all([loadJSON('settings').catch(()=>null),loadJSON('sales').catch(()=>null),loadJSON('listings').catch(()=>null),loadJSON('blog').catch(()=>null)]).then(([s,sa,li,bl])=>{
+Promise.all([loadJSON('settings').catch(()=>null),loadJSON('sales').catch(()=>null),loadJSON('listings').catch(()=>null),loadJSON('blog').catch(()=>null),loadJSON('videos').catch(()=>null)]).then(([s,sa,li,bl,vi])=>{
+  if(vi)VIDS=vi.videos||[];
   if(s){SET=s;const im=$('#heroImg');if(s.hero_photo&&!im.src.endsWith(s.hero_photo)&&!im.src.endsWith('cindy.png')){im.onerror=()=>{im.onerror=null;im.src='cindy.png'};im.src=s.hero_photo}}
   if(sa){SALES=(sa.sales||[]).filter(x=>!(sa.hidden||[]).includes(x.id)).sort((a,b)=>b.price-a.price);SALES._pinned=sa.pinned||[]}
   if(li)LIST=li.listings||[]; if(bl)POSTS=(bl.posts||[]).sort((a,b)=>b.date.localeCompare(a.date));
