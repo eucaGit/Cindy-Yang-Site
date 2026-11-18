@@ -1,0 +1,78 @@
+{
+ "updated": "2026-11-17",
+ "channel": "https://www.youtube.com/@gaearealty",
+ "videos": [
+  {
+   "id": "v1",
+   "youtube": "yNnudN486Gc",
+   "title_en": "2366 Fatjo Pl, Santa Clara",
+   "title_zh": "2366 Fatjo Pl, Santa Clara",
+   "sub_en": "Sold · Santa Clara",
+   "sub_zh": "已售 · Santa Clara",
+   "visible": true
+  },
+  {
+   "id": "v2",
+   "youtube": "-MtT2uxL_3o",
+   "title_en": "34427 Bacon Pl, Fremont",
+   "title_zh": "34427 Bacon Pl, Fremont",
+   "sub_en": "Sold · Fremont",
+   "sub_zh": "已售 · Fremont",
+   "visible": true
+  },
+  {
+   "id": "v3",
+   "youtube": "jMKgy3xQ2QA",
+   "title_en": "40220 Hacienda Ct, Fremont",
+   "title_zh": "40220 Hacienda Ct, Fremont",
+   "sub_en": "Sold · Mission San Jose, Fremont",
+   "sub_zh": "已售 · Fremont 学区",
+   "visible": true
+  },
+  {
+   "id": "v4",
+   "youtube": "jL1eUxGqViA",
+   "title_en": "521 Porpoise Bay Ter #B, Sunnyvale",
+   "title_zh": "521 Porpoise Bay Ter #B, Sunnyvale",
+   "sub_en": "Sold · Sunnyvale",
+   "sub_zh": "已售 · Sunnyvale",
+   "visible": true
+  },
+  {
+   "id": "v5",
+   "youtube": "mfTcpO1CzZQ",
+   "title_en": "182 Melia Loop, Mountain View",
+   "title_zh": "182 Melia Loop, Mountain View",
+   "sub_en": "Listing · near Google",
+   "sub_zh": "在售 · 近 Google",
+   "visible": true
+  },
+  {
+   "id": "v6",
+   "youtube": "aZq5RlQPZoY",
+   "title_en": "1949 Mahuron Cir, San Jose",
+   "title_zh": "1949 Mahuron Cir, San Jose",
+   "sub_en": "Listing · San Jose",
+   "sub_zh": "在售 · San Jose",
+   "visible": true
+  },
+  {
+   "id": "v7",
+   "youtube": "xtEMTuW7fWU",
+   "title_en": "114 Granada Dr, Mountain View",
+   "title_zh": "114 Granada Dr, Mountain View",
+   "sub_en": "Listing · Mountain View",
+   "sub_zh": "在售 · Mountain View",
+   "visible": true
+  },
+  {
+   "id": "v8",
+   "youtube": "5XG6QthOtCU",
+   "title_en": "192 William Manly St, San Jose",
+   "title_zh": "192 William Manly St, San Jose",
+   "sub_en": "Listing · Communications Hill",
+   "sub_zh": "在售 · Communications Hill",
+   "visible": true
+  }
+ ]
+}
