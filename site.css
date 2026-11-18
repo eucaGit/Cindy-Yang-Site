@@ -216,3 +216,100 @@ html[lang=zh] .pane h3,html[lang=zh] .post-card h3,html[lang=zh] .article h1{fon
 .dark .rv figcaption{color:rgba(241,236,226,.55)}
 .dark .rv figcaption b{color:#f1ece2}
 .dark .stars,.dark .more{color:var(--gold2)}
+
+/* =====================================================================
+   DARK MATTE THEME (Nov 17) — charcoal base, Gaea green, frosted matte
+   panels, light letter-spaced type. Overrides the cream theme above.
+   ===================================================================== */
+:root{
+  --bg:#111413; --ink:#ebe6db; --mute:rgba(235,230,219,.58); --deep:#0d100f;
+  --slate:rgba(28,33,31,.72); --slate2:rgba(36,42,39,.86); --line:rgba(235,230,219,.09);
+  --gaea:#c9a96a; --gold2:#d9bd83; --green:#3c6b55; --green2:#244436;
+  --glass:blur(18px) saturate(1.1);
+  --shadow:0 30px 60px -32px rgba(0,0,0,.85);
+}
+body{background:var(--bg);color:var(--ink)}
+body::before{background:
+ radial-gradient(1100px 700px at 90% -10%,rgba(60,107,85,.28),transparent 70%),
+ radial-gradient(900px 800px at -10% 45%,rgba(36,68,54,.22),transparent 70%),
+ radial-gradient(900px 700px at 100% 100%,rgba(201,169,106,.06),transparent 70%),
+ linear-gradient(180deg,#121614,#0e1110)}
+/* subtle film grain for the matte feel */
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.05;
+ background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+nav{background:rgba(14,17,16,.78);border-bottom:1px solid var(--line)}
+.links{text-transform:uppercase;letter-spacing:.16em;font-size:12px;gap:26px}
+.links a:hover{color:var(--ink)}
+.brand b{color:var(--ink)}
+.lang{background:rgba(255,255,255,.04)}
+.lang button.on{background:var(--ink);color:var(--deep)}
+.eyebrow{color:var(--mute);font-size:12px;letter-spacing:.34em}
+.eyebrow b{color:var(--gaea)}
+h1,h2{color:#f3efe6;font-weight:300}
+.lead{color:var(--mute)}
+section{border-top:1px solid var(--line)}
+/* matte frosted panels: mostly opaque, slight blur, hairline border */
+.glass{background:var(--slate);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:var(--glass);-webkit-backdrop-filter:var(--glass)}
+.post-card:hover{background:var(--slate2)}
+/* buttons like the reference: light solid primary, hairline ghost, small caps */
+.btn{background:var(--ink);color:var(--deep);border-radius:4px;font:600 12px var(--sf);letter-spacing:.16em;text-transform:uppercase;padding:16px 26px}
+.btn:hover{background:#fff;transform:none}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(235,230,219,.28)}
+.btn.ghost:hover{background:rgba(255,255,255,.06)}
+.btn.gold{background:var(--gold2);color:var(--deep)}
+.btn.sm{padding:10px 14px;font-size:11px;border-radius:4px}
+html[lang=zh] .btn,html[lang=zh] .links{letter-spacing:.06em}
+input,textarea,select{background:rgba(10,13,12,.6);border:1px solid rgba(235,230,219,.14);color:var(--ink);border-radius:6px}
+input::placeholder,textarea::placeholder{color:rgba(235,230,219,.38)}
+input:focus,textarea:focus,select:focus{border-color:rgba(201,169,106,.6)}
+select option{background:#151917;color:var(--ink)}
+.chip{background:transparent;border:1px solid rgba(235,230,219,.18);color:rgba(235,230,219,.82);border-radius:4px;font-size:13px}
+.chip:hover{background:rgba(255,255,255,.06);border-color:rgba(201,169,106,.5)}
+.tab{border-radius:4px;border-color:rgba(235,230,219,.16);color:var(--mute);text-transform:uppercase;letter-spacing:.14em;font-size:12px;padding:12px 18px}
+.tab.on{background:var(--ink);color:var(--deep);border-color:var(--ink)}
+html[lang=zh] .tab{letter-spacing:.04em;font-size:14px}
+/* hero: full-bleed photo under a deep veil */
+.hero{position:relative;padding:72px 0 88px;background:var(--deep) center/cover}
+.hero::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(11,14,13,.94) 0%,rgba(11,14,13,.78) 45%,rgba(11,14,13,.55) 100%),
+  linear-gradient(0deg,rgba(17,20,19,1) 0%,transparent 30%),
+  radial-gradient(800px 500px at 85% 20%,rgba(60,107,85,.35),transparent 70%)}
+.hero>.wrap{position:relative}
+.hero h1 small{color:rgba(235,230,219,.66)}
+.photo{border:1px solid var(--line);background:#0d100f;border-radius:6px}
+.photo::after{background:linear-gradient(180deg,transparent 55%,rgba(11,14,13,.8))}
+.chatbox{border-radius:6px;background:rgba(18,22,20,.72)}
+.msg{border-radius:6px}
+.msg.c{background:rgba(255,255,255,.06);border:1px solid var(--line);color:var(--ink)}
+.msg.u{background:var(--green2);color:#f3efe6;border:1px solid rgba(60,107,85,.6)}
+.msg.c b{color:var(--gaea)}
+.msg .btn{color:var(--deep)}
+/* stats + cards */
+.stats{border-radius:6px;border:1px solid var(--line);background:rgba(235,230,219,.08)}
+.stat{background:linear-gradient(160deg,#1a1f1d 0%,#131715 60%,#14261d 100%)}
+.pill,.pc,.home,.vid,.rv figure,.pane,.post-card,.feature,.slot,.bio .mid img,.story img,.article .body img{border-radius:6px}
+.pill b{color:#f3efe6}
+.pc .im,.home .ph{background-color:#1a1f1d}
+.pc .p,.home .p{color:#f3efe6}
+.badge{background:rgba(11,14,13,.82);border:1px solid rgba(201,169,106,.35);border-radius:3px}
+.tag{border-radius:3px;border-color:rgba(201,169,106,.45)}
+.feature{box-shadow:var(--shadow)}
+.slot>div{background:rgba(14,17,16,.78);color:var(--gaea)}
+.slot small{color:var(--ink)}
+.slot{border-color:var(--line)}
+.bio .mid img{border-color:var(--line)}
+.rv figcaption b{color:var(--ink)}
+.stars,.more{color:var(--gaea)}
+.article .body{color:rgba(235,230,219,.86)}
+/* section rhythm: alternate base and a deeper green-charcoal band */
+.dark{background:radial-gradient(1000px 600px at 85% 0%,rgba(60,107,85,.30),transparent 70%),linear-gradient(180deg,#151a18,#0f1211);border-top:1px solid var(--line)}
+.dark .glass{background:rgba(255,255,255,.035);border:1px solid var(--line)}
+.dark .tab.on{background:var(--ink);color:var(--deep);border-color:var(--ink)}
+footer{background:#0b0e0d;border-top:1px solid var(--line)}
+.fab{background:var(--ink);color:var(--deep);border-radius:4px;font:600 12px var(--sf);letter-spacing:.14em;text-transform:uppercase;padding:15px 20px;border:0}
+html[lang=zh] .fab{letter-spacing:.05em;font-size:14px}
+/* admin uses this sheet too */
+.ib{background:rgba(255,255,255,.05)!important;color:var(--ink);border-color:rgba(235,230,219,.16)!important}
+.ib.on{background:var(--ink)!important;color:var(--deep)!important}
+.warn{background:rgba(201,169,106,.10)!important;color:var(--ink)!important}
+.status{background:var(--ink)!important;color:var(--deep)!important}
